@@ -8,7 +8,7 @@
 			switch($_GET['act']){
 				case "alta":
 					if(empty($_POST)){
-						require_once("vista/altaInventario.php");
+						require_once("vista/addInventario.php");
 					}else{
 						//Obtener las variables para la alta
 					
@@ -17,22 +17,28 @@
 						$piezasGolpeadas 	= $_POST["piezasGolp"];
 						$severidadGolpe 	= $_POST["severidadGolp"];
 						
-						$formatedModel=$this->model->alta($kilometraje, $cantCombustible, $piezasGolpeadas, $severidadGolpe);
-						if($formatedModel!=false){
-							require_once(view/mostrarInventario.php);
+						
+						addslashes($kilometraje);
+						addslashes($cantCombustible);
+						addslashes($piezasGolp);
+						addslashes($severidadGolp);
+						
+						$resultado=$this->model->alta($kilometraje, $cantCombustible, $piezasGolpeadas, $severidadGolpe);
+						if($resultado!=false){
+							require_once("view/showInventario.php");
 						}else{
-							require_once(view/error.php);
+							require_once("view/errorInventario.php");
 						}
 						
 							
 					}
 				break;
-				case "baja":
-				break;
-				case "modificar":
+				case "mostrarTodos":
+					$Inventario = $this -> model -> mostrarTodos();
+					require_once("view/showInventario.php");
 				break;
 				default:
-					//enviar vista de error
+					require_once("view/Default.php");
 			}
 		}
 	
