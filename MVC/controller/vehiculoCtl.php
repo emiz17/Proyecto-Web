@@ -52,11 +52,15 @@ Class VehiculoCtl{
 					//se checara en la bd si el vin esta registrado y de ser asi
 					//del vin se extraera la informacion del auto y se mostrara
 					//esto es en lo que se obtiene exactamente lo que significa el contenido del vin
+					//despues se contara con un diccionario 
+					//para saber que dato nos proporciona el vin y mostrarlos
 					list($vin, $marca, $modelo, $color) = $this -> modelo -> mostrarDatos($vin);
 					require_once("view/ShowVehiculo.php");
 				}
 				break;
 				case "mostrarTodos":
+					//despues se contara con un diccionario 
+					//para saber que dato nos proporciona el vin y mostrarlos
 					list($vin, $marca, $modelo, $color) = $this -> modelo -> mostrarTodos();
 					require_once("view/ShowVehiculo.php");
 				break;

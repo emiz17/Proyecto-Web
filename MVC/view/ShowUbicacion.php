@@ -1,4 +1,4 @@
 <?php
-echo 'El vehiculo se encuentra en: --';
+echo 'El vehiculo '.$vin ' se encuentra en: '.$ubicacion;
 
 ?>

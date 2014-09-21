@@ -70,15 +70,14 @@ Class ubicacionCtl{
 			}
 		}
 
-		//formato dd-mm-yyyy
+		//formato MM/DD/YYYY 
 		private function validar_fecha($fecha){
-			$pattern=“(0[1-9]|[12][0-9]|3[01])[-](0[1-9]|1[012])[-](19|20)[0-9]{2}”;
+			$pattern="/^\d{1,2}\/\d{1,2}\/\d{4}$/";
 			if (preg_match($pattern,$fecha)) {
 				return true;
 			} else {
 				return false;
 			}
-		}
 
 		private function validar_hora($hora) {
 			$pattern="/^([0-1][0-9]|[2][0-3])[\:]([0-5][0-9])[\:]([0-5][0-9])$/";

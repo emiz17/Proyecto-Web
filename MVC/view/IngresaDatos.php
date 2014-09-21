@@ -1,4 +1,4 @@
 <?php
-echo 'Falta ingresar datos.';
+echo 'Ingresar datos.';
 
 ?>
