@@ -6,7 +6,7 @@ class UbicacionMdl{
 		// el driver 
 	}
 
-	function alta($vin, $accion, $motivo, $ubicacion,$fecha,$hora);{
+	function alta($vin, $accion, $motivo, $ubicacion,$movidoPor,$fecha,$hora);{
 		return true;
 	}
 

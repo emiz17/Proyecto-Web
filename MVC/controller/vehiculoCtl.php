@@ -14,6 +14,8 @@ Class VehiculoCtl{
 				    //Obtener las variables para la alta
 				    //y limpiarlas
 				    $vin = $_POST["vin"];
+				    //en lo que se obtiene exactamente lo que significa el contenido del vin
+				    //de las siguientes se borraran la de marca y modelo menos la del color
 				    $marca = $_POST["marca"];
 					$modelo = $_POST["modelo"];
 					$color = $_POST["color"];
@@ -22,6 +24,13 @@ Class VehiculoCtl{
 					addslashes($marca);
 					addslashes($modelo);
 					addslashes($color);
+
+					//el vin se puede validar pero aun no se encuentra un estandar
+  					//que usar-> 17 caracteres , cualquiera menos I,O,Q y Ñ
+  					// primerods 3 son WMI
+  					//sig 6 son VDS
+  					//ultimos VIS
+  					//basado en http://www.guiaautomotrizcr.com/Articulos/numero_VIN.php
 
 					$resultado = $this -> modelo -> alta($vin, $marca, $modelo, $color);
 					if($resultado!==FALSE){
@@ -39,6 +48,10 @@ Class VehiculoCtl{
 				else{
 					$vin = $_POST["vin"];
 					addslashes($vin);
+					
+					//se checara en la bd si el vin esta registrado y de ser asi
+					//del vin se extraera la informacion del auto y se mostrara
+					//esto es en lo que se obtiene exactamente lo que significa el contenido del vin
 					list($vin, $marca, $modelo, $color) = $this -> modelo -> mostrarDatos($vin);
 					require_once("view/ShowVehiculo.php");
 				}

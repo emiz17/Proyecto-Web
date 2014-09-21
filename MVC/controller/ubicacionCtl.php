@@ -18,6 +18,7 @@ Class ubicacionCtl{
 					$accion = $_POST["accion"];
 					$motivo = $_POST["motivo"];
 					$ubicacion = $_POST["ubicacion"];
+					$movidoPor = $_POST["movidoPor"];
 					$fecha = $_POST["fecha"];
 					$hora = $_POST["hora"];
 
@@ -25,10 +26,21 @@ Class ubicacionCtl{
   					addslashes($accion);
   					addslashes($motivo);
   					addslashes($ubicacion);
+  					addslashes($movidoPor);
   					addslashes($fecha);
   					addslashes($hora);
 
-					$resultado = $this -> modelo -> alta($vin, $accion, $motivo, $ubicacion,$fecha,$hora);
+  					//el vin se puede validar pero aun no se encuentra un estandar
+  					//que usar-> 17 caracteres , cualquiera menos I,O,Q y Ñ
+  					// primerods 3 son WMI
+  					//sig 6 son VDS
+  					//ultimos VIS
+  					//basado en http://www.guiaautomotrizcr.com/Articulos/numero_VIN.php
+
+  					$trueFecha= validar_fecha($fecha);
+  					$trueHora= validar_hora($hora);
+
+					$resultado = $this -> modelo -> alta($vin, $accion, $motivo, $ubicacion,$movidoPor,$fecha,$hora);
 					if($resultado!==FALSE){
 					   require_once("view/AddUbicacion.php");
 					}
@@ -57,6 +69,22 @@ Class ubicacionCtl{
 					 require_once("view/Default.php");
 			}
 		}
+
+		//formato dd-mm-yyyy
+		private function validar_fecha($fecha){
+			$pattern=“(0[1-9]|[12][0-9]|3[01])[-](0[1-9]|1[012])[-](19|20)[0-9]{2}”;
+			if (preg_match($pattern,$fecha)) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+		private function validar_hora($hora) {
+			$pattern="/^([0-1][0-9]|[2][0-3])[\:]([0-5][0-9])[\:]([0-5][0-9])$/";
+			if(preg_match($pattern,$hora)) 
+				return true; 
+			return false; }
 }
 
 ?>
