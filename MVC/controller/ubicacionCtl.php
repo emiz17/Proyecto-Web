@@ -2,7 +2,7 @@
 Class ubicacionCtl{
 	private $modelo;
 	//y realizar la validacion de las palabras
-
+	//prueba.....
 	public function execute(){
 	    require_once("model/UbicacionMdl.php");
 	    $this -> modelo = new UbicacionMdl();
