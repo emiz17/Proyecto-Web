@@ -29,4 +29,8 @@ Cada uno de estos puede o no tener además ubicaciones en forma de tablero, ejem
 
 
 #LIGA DEL SERVIDOR
+<<<<<<< HEAD
+http://vehiculoproyectoweb.co.nf/
+=======
 * Servidor: [http://vehiculoproyectoweb.co.nf/](http://vehiculoproyectoweb.co.nf/)
+>>>>>>> 072907884e30babb4461415b929e19f7ed7b1a79

@@ -10,19 +10,23 @@
 	switch($ctl){
 		case "vehiculos":
 			require_once("controller/vehiculoCtl.php");
-			$ctl= new VehiculoCtl();
+			$obj= new VehiculoCtl();
 		break;
 		case "inventario":
 			require_once("controller/inventarioCtl.php");
-			$ctl=new Inventario();
+			$obj=new InventarioCtl();
 		break;
 		case "ubicacion":
 			require_once("controller/ubicacionCtl.php");
-			$ctl=new Ubicacion();
+			$obj=new UbicacionCtl();
 		break;
 		default:
 			require_once("index.php");
+			$obj=null;
 	}
 	
-	$ctl->execute();
+
+	if($obj!=null)
+		$obj->execute();
+
 ?>

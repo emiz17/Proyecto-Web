@@ -1,10 +1,10 @@
 <?php
 
 	class inventarioMdl{
-		private $kilometraje;
-		private $cantCombustible;
-		private $piezasGolpeadas;
-		private	$severidadGolpe;
+		public $kilometraje;
+		public $cantCombustible;
+		public $piezasGolpeadas;
+		public $severidadGolpe;
 		
 			
 		public function alta($kilometraje, $cantCombustible, $piezasGolpeadas, $severidadGolpe){
@@ -23,7 +23,6 @@
 			//Mas adelante regresara una consulta de la DB
 			return $this;
 		}
-	
 		
 		
 	}

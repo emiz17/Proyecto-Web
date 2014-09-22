@@ -5,10 +5,11 @@
 		public function execute(){
 			require_once("model/inventarioMdl.php");
 			$this->model=new InventarioMdl();
-			switch($_GET['act']){
+			$act=isset($_GET['act'])?$_GET['act']:"";
+			switch($act){
 				case "alta":
 					if(empty($_POST)){
-						require_once("vista/addInventario.php");
+						require_once("view/addInventario.php");
 					}else{
 						//Obtener las variables para la alta
 					
@@ -34,7 +35,7 @@
 					}
 				break;
 				case "mostrarTodos":
-					$Inventario = $this -> model -> mostrarTodos();
+					$inventario = $this -> model -> mostrarTodos();
 					require_once("view/showInventario.php");
 				break;
 				default:

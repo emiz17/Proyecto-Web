@@ -6,7 +6,8 @@ Class ubicacionCtl{
 	public function execute(){
 	    require_once("model/UbicacionMdl.php");
 	    $this -> modelo = new UbicacionMdl();
-	    switch ($_GET['act']){
+	    $act=isset($_GET['act'])?$_GET['act']:"";
+		switch ($act){
 			case "alta":
 				if(empty($_POST)){
 					require_once("view/IngresaDatos.php");

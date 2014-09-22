@@ -5,7 +5,8 @@ Class VehiculoCtl{
 	public function execute(){
 		require_once("model/VehiculoMdl.php");
 		$this -> modelo = new VehiculoMdl();
-		switch ($_GET['act']){
+		$act=isset($_GET['act'])?$_GET['act']:"";
+		switch ($act){
 			case "alta":
 				if(empty($_POST)){
 					require_once("view/IngresaDatos.php");
