@@ -24,9 +24,13 @@ Cada uno de estos puede o no tener además ubicaciones en forma de tablero, ejem
 
 
 #INTEGRANTES DEL EQUIPO
-005259193 CASTRO VALLE EMMA BEATRIZ
-210224683 GODINEZ JIMENEZ IGNACIO DANIEL
+* 005259193 CASTRO VALLE EMMA BEATRIZ
+* 210224683 GODINEZ JIMENEZ IGNACIO DANIEL
 
 
 #LIGA DEL SERVIDOR
+<<<<<<< HEAD
 http://vehiculoproyectoweb.co.nf/
+=======
+* Servidor: [http://vehiculoproyectoweb.co.nf/](http://vehiculoproyectoweb.co.nf/)
+>>>>>>> 072907884e30babb4461415b929e19f7ed7b1a79
