@@ -1,24 +1,34 @@
 <?php
 
 	class inventarioMdl{
-		public $kilometraje;
-		public $cantCombustible;
-		public $piezasGolpeadas;
-		public $severidadGolpe;
+		private $driver;
 		
-			
+		
+		function __construct(){
+			require_once("config.inc");
+			$this->driver=new mysqli($host, $user, $pass, $db);
+			if($this->driver->connect_errno)
+				require_once("view/showErrorConexion.php");
+		}
+
+
 		public function alta($kilometraje, $cantCombustible, $piezasGolpeadas, $severidadGolpe){
 			
+			//insertarlos en la base de datos generando un query y posteriormente
+			//ejecutandolo
+			$query="INSERT INTO Inventario (kilometraje, combustible)
+					VALUES (\"$kilometraje\", \"$cantCombustible\")";
 
-			//colocarlos como atributos
-			$this->kilometraje=$kilometraje;
-			$this->cantCombustible=$cantCombustible;
-			$this->piezasGolpeadas=$piezasGolpeadas;
-			$this->severidadGolpe=$severidadGolpe;
-			
-			return true;
-		}
+			$r=$this->driver->query($query);
 		
+			if($this -> driver -> insert_id){
+				return $this -> driver -> insert_id;
+			}elseif($r === FALSE)
+				return FALSE;
+			}
+		}
+
+
 		public function mostrarTodos(){
 			//Mas adelante regresara una consulta de la DB
 			return $this;

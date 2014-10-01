@@ -9,6 +9,7 @@
 			switch($act){
 				case "alta":
 					if(empty($_POST)){
+						//carga la vista alumno sin post
 						require_once("view/addInventario.php");
 					}else{
 						//Obtener las variables para la alta

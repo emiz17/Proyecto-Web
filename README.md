@@ -23,14 +23,10 @@ El taller tiene ubicaciones definidas por el administrador tales como taller, ho
 Cada uno de estos puede o no tener además ubicaciones en forma de tablero, ejemplo, en patio se definen ubicaciones como A1, C4, etc.
 
 
-#INTEGRANTES DEL EQUIPO
+#INTEGRANTES DEL EQUIPO: WEB solutions team
 * 005259193 CASTRO VALLE EMMA BEATRIZ
 * 210224683 GODINEZ JIMENEZ IGNACIO DANIEL
 
 
 #LIGA DEL SERVIDOR
-<<<<<<< HEAD
-http://vehiculoproyectoweb.co.nf/
-=======
 * Servidor: [http://vehiculoproyectoweb.co.nf/](http://vehiculoproyectoweb.co.nf/)
->>>>>>> 072907884e30babb4461415b929e19f7ed7b1a79
