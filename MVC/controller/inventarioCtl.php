@@ -12,21 +12,21 @@
 						//carga la vista alumno sin post
 						require_once("view/addInventario.php");
 					}else{
-						//Obtener las variables para la alta
+						//Obtener las variables para la alta y limpiarlas
 					
 						$kilometraje 		= $_POST["kilometraje"];
 						$cantCombustible	= $_POST["cantComb"];
 						$piezasGolpeadas 	= $_POST["piezasGolp"];
 						$severidadGolpe 	= $_POST["severidadGolp"];
 						
-						
 						addslashes($kilometraje);
 						addslashes($cantCombustible);
 						addslashes($piezasGolp);
 						addslashes($severidadGolp);
 						
-						$resultado=$this->model->alta($kilometraje, $cantCombustible, $piezasGolpeadas, $severidadGolpe);
-						if($resultado!=false){
+						$resultado=$this->model->alta($kilometraje, $cantCombustible);
+						
+						if($resultado!=FALSE){
 							require_once("view/showInventario.php");
 						}else{
 							require_once("view/errorInventario.php");

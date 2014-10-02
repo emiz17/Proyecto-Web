@@ -1,6 +1,7 @@
 <?php
 
 	class inventarioMdl{
+		
 		private $driver;
 		
 		
@@ -12,26 +13,61 @@
 		}
 
 
-		public function alta($kilometraje, $cantCombustible, $piezasGolpeadas, $severidadGolpe){
-			
+		/************************************************
+		*					INSERT 						*
+		*************************************************/
+		public function alta($kilometraje, $cantCombustible, $VIN){
+			$r=FALSE;
+
 			//insertarlos en la base de datos generando un query y posteriormente
 			//ejecutandolo
-			$query="INSERT INTO Inventario (kilometraje, combustible)
-					VALUES (\"$kilometraje\", \"$cantCombustible\")";
+			$query="INSERT INTO Inventario (kilometraje, combustible, VIN)
+					VALUES (\"$kilometraje\", \"$cantCombustible\", \"$VIN\" )";
 
 			$r=$this->driver->query($query);
 		
-			if($this -> driver -> insert_id){
-				return $this -> driver -> insert_id;
-			}elseif($r === FALSE)
-				return FALSE;
-			}
+			//if($this -> driver -> insert_id){
+			//	return $this -> driver -> insert_id;
+			//}
+			if($r !== FALSE)
+				return TRUE;
+
 		}
 
 
+		
+		/************************************************
+		*					MODIFY 						*
+		*************************************************/
+		public function modificar($kilometraje, $cantCombustible, $VIN){
+			$r=FALSE;
+
+			//insertarlos en la base de datos generando un query y posteriormente
+			//ejecutandolo
+			$query="UPDATE Inventario SET kilometraje=\"$kilometraje\", combustible=\"$cantCombustible\" 
+			WHERE VIN=\"$VIN\" ";
+
+			$r=$this->driver->query($query);
+		
+			if($r !== FALSE)
+				return TRUE;
+
+		}
+
+
+		/************************************************
+		*					SHOW ALL 					*
+		*************************************************/
 		public function mostrarTodos(){
-			//Mas adelante regresara una consulta de la DB
-			return $this;
+			
+			$query='SELECT * FROM Inventario';
+
+			$r=$this->driver->query($query);
+
+			while($row=$r->fetch_assoc())
+				$rows[]=$row;
+
+			return $rows;
 		}
 		
 		
