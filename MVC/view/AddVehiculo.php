@@ -1,4 +1,4 @@
 <?php
-echo 'Vehiculo añadida correctamente.';
+echo 'Vehiculo añadido correctamente.';
 
 ?>

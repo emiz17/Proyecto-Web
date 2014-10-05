@@ -1,15 +1,16 @@
 <?php
 Class VehiculoCtl{
-	private $modelo;
+	private $model;
 
 	public function execute(){
 		require_once("model/VehiculoMdl.php");
-		$this -> modelo = new VehiculoMdl();
+		$this -> model = new VehiculoMdl();
 		$act=isset($_GET['act'])?$_GET['act']:"";
 		switch ($act){
 			case "alta":
 				if(empty($_POST)){
-					require_once("view/IngresaDatos.php");
+					if($this->model->connection_successful())
+						require_once("view/IngresaDatos.php");
 				}
 				else{
 				    //Obtener las variables para la alta
@@ -33,7 +34,7 @@ Class VehiculoCtl{
   					//ultimos VIS
   					//basado en http://www.guiaautomotrizcr.com/Articulos/numero_VIN.php
 
-					$resultado = $this -> modelo -> alta($vin, $marca, $modelo, $color);
+					$resultado = $this -> model -> alta($vin, $marca, $modelo, $color);
 					if($resultado!==FALSE){
 					    require_once("view/AddVehiculo.php");
 					}
@@ -44,7 +45,8 @@ Class VehiculoCtl{
 			case "mostrar":
 				if(empty($_POST)){
 					//Cargo la vista de agrega datos
-					require_once("view/IngresaDatos.php");
+					if($this->model->connection_successful())
+						require_once("view/InsertVIN.php");
 				}
 				else{
 					$vin = $_POST["vin"];
@@ -55,36 +57,41 @@ Class VehiculoCtl{
 					//esto es en lo que se obtiene exactamente lo que significa el contenido del vin
 					//despues se contara con un diccionario 
 					//para saber que dato nos proporciona el vin y mostrarlos
-					list($vin, $marca, $modelo, $color) = $this -> modelo -> mostrarDatos($vin);
+					$result=$this -> model -> mostrarDatos($vin);
 					require_once("view/ShowVehiculo.php");
 				}
-				break;
-				case "mostrarTodos":
+			break;
+			case "mostrarTodos":
 					//despues se contara con un diccionario 
 					//para saber que dato nos proporciona el vin y mostrarlos
-					list($vin, $marca, $modelo, $color) = $this -> modelo -> mostrarTodos();
-					require_once("view/ShowVehiculo.php");
-				break;
-				case "eliminar":
+				if($this->model->connection_successful()){
+					$result= $this -> model -> mostrarTodos();
+					require_once("view/ShowTodosVehiculos.php");
+				}
+			break;
+			case "eliminar":
 					if(empty($_POST)){
 						//Cargo la vista de agrega datos
-						require_once("view/IngresaDatos.php");
+						if($this->model->connection_successful())
+							require_once("view/IngresaDatos.php");
 					}
 					else{
 						$vin = $_POST["vin"];
 						addslashes($vin);
-						$resultado = $this -> modelo -> eliminar($vin);
+						$resultado = $this -> model -> eliminar($vin);
 						if($resultado!==FALSE){
 							require_once("view/VehiculoEliminado.php");
 						}
 						else
-							equire_once("view/ErrorOperacion.php");
+							require_once("view/ErrorOperacion.php");
 					}
 				break;
 				default:
 					require_once("view/Default.php");
-			}
-		}
-}
+			}//Fin de switch
+
+		}//Fin de function execute
+
+}//Fin de clase
 
 ?>

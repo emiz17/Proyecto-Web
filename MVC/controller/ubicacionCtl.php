@@ -10,7 +10,8 @@ Class ubicacionCtl{
 		switch ($act){
 			case "alta":
 				if(empty($_POST)){
-					require_once("view/IngresaDatos.php");
+					if($this->model->connection_successful())
+						require_once("view/IngresaDatos.php");
 				}
 				else{
 					//Obtener las variables para la alta
@@ -52,7 +53,8 @@ Class ubicacionCtl{
 				case "mostrarUbicacion":
 					if(empty($_POST)){
 					   //Cargo la vista de agrega datos
-					   require_once("view/IngresaDatos.php");
+						if($this->model->connection_successful())
+							require_once("view/InsertVIN.php");
 					}
 					else{						
 					   $vin = $_POST["vin"];
@@ -63,8 +65,10 @@ Class ubicacionCtl{
 					}
 				break;
 				case "mostrarUbicacionTodos":
-					 list($vin, $ubicacion) = $this -> modelo -> mostrarUbicacionTodos();
-					 require_once("view/ShowUbicacion.php");
+					if($this->model->connection_successful()){
+					 	$result= $this -> model -> mostrarUbicacionTodos();
+					 	require_once("view/ShowTodosUbicacion.php");
+					}
 				break;
 				default:
 					 require_once("view/Default.php");

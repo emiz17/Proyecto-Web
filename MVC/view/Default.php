@@ -1,3 +1,3 @@
 <?php
-	echo "Default.......";
+	echo "ERROR:<BR>Link equivocado";
 ?>

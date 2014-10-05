@@ -6,10 +6,11 @@
 		
 		
 		function __construct(){
+			$host=$user=$pass=$db='';
 			require_once("config.inc");
 			$this->driver=new mysqli($host, $user, $pass, $db);
 			if($this->driver->connect_errno)
-				require_once("view/showErrorConexion.php");
+				require_once("view/ShowErrorConexion.php");
 		}
 
 
@@ -17,7 +18,6 @@
 		*					INSERT 						*
 		*************************************************/
 		public function alta($kilometraje, $cantCombustible, $VIN){
-			$r=FALSE;
 
 			//insertarlos en la base de datos generando un query y posteriormente
 			//ejecutandolo
@@ -31,6 +31,7 @@
 			//}
 			if($r !== FALSE)
 				return TRUE;
+			return $r;
 
 		}
 
@@ -51,6 +52,27 @@
 		
 			if($r !== FALSE)
 				return TRUE;
+			return $r;
+
+		}
+
+
+		/************************************************
+		*					 SHOW 						* 
+		*************************************************/
+		function mostrarDatos($vin){
+		
+			$rows=FALSE;
+
+			$query="SELECT * FROM Inventario WHERE VIN=\"$vin\" ";
+
+			$r=$this->driver->query($query);
+
+			/*while($row=$r->fetch_assoc())
+				$rows[]=$row;
+
+			return $rows;*/
+			return $row=$r->fetch_assoc();
 
 		}
 
