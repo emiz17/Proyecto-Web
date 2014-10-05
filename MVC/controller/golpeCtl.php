@@ -63,8 +63,7 @@
 						else
 							require_once("view/ErrorOperacion.php");
 						}
-						
-					}
+
 				break;
 				case "mostrar":
 					if(empty($_POST)){

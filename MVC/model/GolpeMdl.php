@@ -1,6 +1,6 @@
 <?php
 
-	class inventarioMdl{
+	class GolpeMdl{
 		
 		private $driver;
 		
@@ -12,7 +12,11 @@
 			if($this->driver->connect_errno)
 				require_once("view/ShowErrorConexion.php");
 		}
-
+		function connection_successful(){
+			if(!$this->driver->connect_errno)
+				return TRUE;
+			return FALSE;
+		}
 
 		/************************************************
 		*					INSERT 						*

@@ -10,6 +10,12 @@
 				if($this->driver->connect_errno)
 					require_once("view/ShowErrorConexion.php");
 		}
+		
+		function connection_successful(){
+			if(!$this->driver->connect_errno)
+				return TRUE;
+			return FALSE;
+		}
 
 
 		/************************************************
