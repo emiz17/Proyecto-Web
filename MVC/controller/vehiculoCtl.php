@@ -42,6 +42,40 @@ Class VehiculoCtl{
 						require_once("view/ErrorOperacion.php");
 					}
 			break;
+			case "modificar":
+				if(empty($_POST)){
+					//Cargo la vista de agrega datos
+					if($this->model->connection_successful())
+						require_once("view/InsertVIN.php");
+				}
+				else{
+					//se buscara el vehiculo por VIN
+					$vin = $_POST["vin"];
+					addslashes($vin);
+					
+					//Se muestran los datos actuales
+					$result=$this -> model -> mostrarDatos($vin);
+					require_once("view/ShowVehiculo.php");
+
+					//Se escribiran de nuevo los datos insertados
+					$marca = $_POST["marca"];
+					$modelo = $_POST["modelo"];
+					$color = $_POST["color"];
+
+					addslashes($marca);
+					addslashes($modelo);
+					addslashes($color);
+
+					$result=$this -> model -> modificar($vin, $marca, $modelo, $color);
+					if($result!==FALSE){
+					    require_once("view/ModifyVehiculo.php");
+					}
+					else
+						require_once("view/ErrorOperacion.php");
+					}
+					
+				}
+			break;	
 			case "mostrar":
 				if(empty($_POST)){
 					//Cargo la vista de agrega datos

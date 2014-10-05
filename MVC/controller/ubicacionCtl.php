@@ -50,6 +50,44 @@ Class ubicacionCtl{
 					   require_once("view/ErrorOperacion.php");
 				}
 				break;
+				case "modificar":
+					if(empty($_POST)){
+						//Cargo la vista de agrega datos
+						if($this->model->connection_successful())
+							require_once("view/InsertVIN.php");
+					}
+					else{
+						//se buscara el vehiculo por VIN
+						$vin = $_POST["vin"];
+						addslashes($vin);
+						
+						//Se muestran los datos actuales
+						$result=$this -> model -> mostrarDatos($vin);
+						require_once("view/ShowUbicacion.php");
+
+						//Se escribiran de nuevo los datos insertados
+						$ubicacion = $_POST["ubicacion"];
+						$movidoPor = $_POST["movidoPor"];
+						$motivo = $_POST["motivo"];
+						$fecha = $_POST["fecha"];
+						$hora = $_POST["hora"];
+
+						addslashes($ubicacion);
+						addslashes($movidoPor);
+	  					addslashes($motivo);
+	  					addslashes($fecha);
+	  					addslashes($hora);
+
+						$result=$this -> model -> modificar($vin, $ubicacion, $movidoPor, $motivo, $fecha, $hora);
+						if($result!==FALSE){
+						    require_once("view/ModifyUbicacion.php");
+						}
+						else
+							require_once("view/ErrorOperacion.php");
+						}
+						
+					}
+				break;
 				case "mostrarUbicacion":
 					if(empty($_POST)){
 					   //Cargo la vista de agrega datos

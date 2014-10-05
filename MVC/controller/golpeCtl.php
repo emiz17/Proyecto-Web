@@ -1,10 +1,10 @@
 <?php
-	class InventarioCtl {
+	class GolpeCtl {
 		private $model;
 		
 		public function execute(){
-			require_once("model/InventarioMdl.php");
-			$this->model=new InventarioMdl();
+			require_once("model/GolpeMdl.php");
+			$this->model=new GolpeMdl();
 			$act=isset($_GET['act'])?$_GET['act']:"";
 			switch($act){
 				case "alta":
@@ -15,18 +15,18 @@
 					}else{
 						//Obtener las variables para la alta y limpiarlas
 					
-						$vin				= $_POST['vin'];
-						$kilometraje 		= $_POST['kilometraje'];
-						$cantCombustible	= $_POST['cantCombustible'];
+						$vin= $_POST['vin'];
+						$pieza = $_POST['pieza'];
+						$severidad= $_POST['severidad'];
 						
 						addslashes($vin);
-						addslashes($kilometraje);
-						addslashes($cantCombustible);
+						addslashes($pieza);
+						addslashes($severidad);
 
-						$result=$this->model->alta($kilometraje, $cantCombustible, $vin);
+						$result=$this->model->alta($pieza, $severidad, $vin);
 						
 						if($result!=FALSE){
-							require_once("view/AddInventario.php");
+							require_once("view/AddGolpe.php");
 						}else{
 							require_once("view/ErrorOperacion.php");
 						}
@@ -47,18 +47,18 @@
 						
 						//Se muestran los datos actuales
 						$result=$this -> model -> mostrarDatos($vin);
-						require_once("view/ShowInventario.php");
+						require_once("view/ShowGolpe.php");
 
 						//Se escribiran de nuevo los datos insertados
-						$kilometraje 		= $_POST['kilometraje'];
-						$cantCombustible	= $_POST['cantCombustible'];
+						$pieza = $_POST['pieza'];
+						$severidad= $_POST['severidad'];
+						
+						addslashes($pieza);
+						addslashes($severidad);
 
-						addslashes($kilometraje);
-						addslashes($cantCombustible);
-
-						$result=$this -> model -> modificar($kilometraje, $cantCombustible, $vin);
+						$result=$this -> model -> modificar($pieza, $severidad, $vin);
 						if($result!==FALSE){
-						    require_once("view/ModifyInventario.php");
+						    require_once("view/ModifyGolpe.php");
 						}
 						else
 							require_once("view/ErrorOperacion.php");
@@ -82,13 +82,13 @@
 						//despues se contara con un diccionario 
 						//para saber que dato nos proporciona el vin y mostrarlos
 						$result=$this -> model -> mostrarDatos($vin);
-						require_once("view/ShowInventario.php");
+						require_once("view/ShowGolpe.php");
 					}
 				break;
 				case "mostrarTodos":
 					if($this->model->connection_successful()){
 						$result= $this -> model -> mostrarTodos();
-						require_once("view/showTodosInventario.php");
+						require_once("view/showTodosGolpe.php");
 					}
 				break;
 				default:

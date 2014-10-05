@@ -1,6 +1,6 @@
 <?php
 
-	class InventarioMdl{
+	class inventarioMdl{
 		
 		private $driver;
 		
@@ -17,12 +17,12 @@
 		/************************************************
 		*					INSERT 						*
 		*************************************************/
-		public function alta($kilometraje, $cantCombustible, $VIN){
+		public function alta($pieza, $severidad, $VIN){
 
 			//insertarlos en la base de datos generando un query y posteriormente
 			//ejecutandolo
-			$query="INSERT INTO Inventario (kilometraje, combustible, VIN)
-					VALUES (\"$kilometraje\", \"$cantCombustible\", \"$VIN\" )";
+			$query="INSERT INTO Golpe (pieza, severidad, VIN)
+					VALUES (\"$pieza\", \"$severidad\", \"$VIN\" )";
 
 			$r=$this->driver->query($query);
 		
@@ -40,12 +40,12 @@
 		/************************************************
 		*					MODIFY 						*
 		*************************************************/
-		public function modificar($kilometraje, $cantCombustible, $VIN){
+		public function modificar($pieza, $severidad, $VIN){
 			$r=FALSE;
 
 			//insertarlos en la base de datos generando un query y posteriormente
 			//ejecutandolo
-			$query="UPDATE Inventario SET kilometraje=\"$kilometraje\", combustible=\"$cantCombustible\" 
+			$query="UPDATE Golpe SET pieza=\"$pieza\", severidad=\"$severidad\" 
 			WHERE VIN=\"$VIN\" ";
 
 			$r=$this->driver->query($query);
@@ -64,7 +64,7 @@
 		
 			$rows=FALSE;
 
-			$query="SELECT * FROM Inventario WHERE VIN=\"$vin\" ";
+			$query="SELECT * FROM Golpe WHERE VIN=\"$vin\" ";
 
 			$r=$this->driver->query($query);
 
@@ -82,7 +82,7 @@
 		*************************************************/
 		public function mostrarTodos(){
 			
-			$query='SELECT * FROM Inventario';
+			$query='SELECT * FROM Golpe';
 
 			$r=$this->driver->query($query);
 

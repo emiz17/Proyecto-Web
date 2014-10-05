@@ -16,6 +16,10 @@
 			require_once("controller/inventarioCtl.php");
 			$obj=new InventarioCtl();
 		break;
+		case "golpes":
+			require_once("controller/golpeCtl.php");
+			$obj=new GolpeCtl();
+		break;
 		case "ubicacion":
 			require_once("controller/ubicacionCtl.php");
 			$obj=new UbicacionCtl();
