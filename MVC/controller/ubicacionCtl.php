@@ -1,11 +1,11 @@
 <?php
 Class ubicacionCtl{
-	private $modelo;
+	private $model;
 	//y realizar la validacion de las palabras
 	//prueba.....
 	public function execute(){
 	    require_once("model/UbicacionMdl.php");
-	    $this -> modelo = new UbicacionMdl();
+	    $this -> model = new UbicacionMdl();
 	    $act=isset($_GET['act'])?$_GET['act']:"";
 		switch ($act){
 			case "alta":
@@ -42,7 +42,7 @@ Class ubicacionCtl{
   					$trueFecha= validar_fecha($fecha);
   					$trueHora= validar_hora($hora);
 
-					$resultado = $this -> modelo -> alta($vin, $accion, $motivo, $ubicacion,$movidoPor,$fecha,$hora);
+					$resultado = $this -> model -> alta($vin, $accion, $motivo, $ubicacion,$movidoPor,$fecha,$hora);
 					if($resultado!==FALSE){
 					   require_once("view/AddUbicacion.php");
 					}
@@ -60,7 +60,7 @@ Class ubicacionCtl{
 					   $vin = $_POST["vin"];
 					   addslashes($vin);
 
-					   $ubicacion = $this -> modelo -> mostrarUbicacion($vin);
+					   $ubicacion = $this -> model -> mostrarUbicacion($vin);
 					   require_once("view/ShowUbicacion.php");
 					}
 				break;
