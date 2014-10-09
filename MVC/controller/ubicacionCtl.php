@@ -1,5 +1,5 @@
 <?php
-Class ubicacionCtl{
+Class UbicacionCtl{
 	private $model;
 	//y realizar la validacion de las palabras
 	//prueba.....
@@ -39,8 +39,8 @@ Class ubicacionCtl{
   					//ultimos VIS
   					//basado en http://www.guiaautomotrizcr.com/Articulos/numero_VIN.php
 
-  					$trueFecha= $this->validar_fecha($fecha);
-  					$trueHora= $this->validar_hora($hora);
+  					$trueFecha= validar_fecha($fecha);
+  					$trueHora= validar_hora($hora);
 
 					$resultado = $this -> model -> alta($vin, $accion, $motivo, $ubicacion,$movidoPor,$fecha,$hora);
 					if($resultado!==FALSE){
@@ -82,10 +82,11 @@ Class ubicacionCtl{
 						if($result!==FALSE){
 						    require_once("view/ModifyUbicacion.php");
 						}
-						else
+						else{
 							require_once("view/ErrorOperacion.php");
 						}
 						
+					}
 				break;
 				case "mostrarUbicacion":
 					if(empty($_POST)){
@@ -97,7 +98,7 @@ Class ubicacionCtl{
 					   $vin = $_POST["vin"];
 					   addslashes($vin);
 
-					   $result = $this -> model -> mostrarUbicacion($vin);
+					   $ubicacion = $this -> model -> mostrarUbicacion($vin);
 					   require_once("view/ShowUbicacion.php");
 					}
 				break;

@@ -10,12 +10,6 @@
 				if($this->driver->connect_errno)
 					require_once("view/ShowErrorConexion.php");
 		}
-		
-		function connection_successful(){
-			if(!$this->driver->connect_errno)
-				return TRUE;
-			return FALSE;
-		}
 
 
 		/************************************************
@@ -45,7 +39,7 @@
 			//insertarlos en la base de datos generando un query y posteriormente
 			//ejecutandolo
 			$query="UPDATE Ubicacion SET ubicacion=\"$ubicacion\", nombre_chofer=\"$movidoPor\", motivo=\"$motivo\", fecha=\"$fecha\", hora=\"$hora\"
-			WHERE VIN=\"$VIN\" ";
+			WHERE VIN=\"$vin\" ";
 
 			$r=$this->driver->query($query);
 		

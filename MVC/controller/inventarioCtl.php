@@ -60,9 +60,11 @@
 						if($result!==FALSE){
 						    require_once("view/ModifyInventario.php");
 						}
-						else
+						else{
 							require_once("view/ErrorOperacion.php");
 						}
+						
+					}
 				break;
 				case "mostrar":
 					if(empty($_POST)){

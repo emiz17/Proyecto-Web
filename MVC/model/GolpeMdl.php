@@ -12,21 +12,17 @@
 			if($this->driver->connect_errno)
 				require_once("view/ShowErrorConexion.php");
 		}
-		function connection_successful(){
-			if(!$this->driver->connect_errno)
-				return TRUE;
-			return FALSE;
-		}
+
 
 		/************************************************
 		*					INSERT 						*
 		*************************************************/
-		public function alta($pieza, $severidad, $VIN){
+		public function alta($pieza, $severidad, $vin){
 
 			//insertarlos en la base de datos generando un query y posteriormente
 			//ejecutandolo
 			$query="INSERT INTO Golpe (pieza, severidad, VIN)
-					VALUES (\"$pieza\", \"$severidad\", \"$VIN\" )";
+					VALUES (\"$pieza\", \"$severidad\", \"$vin\" )";
 
 			$r=$this->driver->query($query);
 		
@@ -44,13 +40,13 @@
 		/************************************************
 		*					MODIFY 						*
 		*************************************************/
-		public function modificar($pieza, $severidad, $VIN){
+		public function modificar($pieza, $severidad, $vin){
 			$r=FALSE;
 
 			//insertarlos en la base de datos generando un query y posteriormente
 			//ejecutandolo
 			$query="UPDATE Golpe SET pieza=\"$pieza\", severidad=\"$severidad\" 
-			WHERE VIN=\"$VIN\" ";
+			WHERE VIN=\"$vin\" ";
 
 			$r=$this->driver->query($query);
 		

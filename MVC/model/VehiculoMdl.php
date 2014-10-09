@@ -45,7 +45,7 @@
 			//insertarlos en la base de datos generando un query y posteriormente
 			//ejecutandolo
 			$query="UPDATE Vehiculo SET marca=\"$marca\", modelo=\"$modelo\", color=\"$color\"
-			WHERE VIN=\"$VIN\" ";
+			WHERE VIN=\"$vin\" ";
 
 			$r=$this->driver->query($query);
 		
@@ -61,7 +61,7 @@
 		*************************************************/
 		function mostrarDatos($vin){
 		
-			$rows=FALSE;
+			$row=FALSE;
 
 			$query="SELECT * FROM Vehiculo WHERE VIN=\"$vin\" ";
 
@@ -71,7 +71,12 @@
 				$rows[]=$row;
 
 			return $rows;*/
-			return $row=$r->fetch_assoc();
+			$row=$r->fetch_assoc();
+
+			if($row===NULL)
+				$row=FALSE;
+
+			return $row;
 
 		}
 
@@ -90,6 +95,9 @@
 			while($row=$r->fetch_assoc())
 				$rows[]=$row;
 
+			if($rows===NULL)
+				$rows=FALSE;
+			
 			return $rows;
 		}
 
@@ -102,7 +110,7 @@
 			$query="DELETE FROM Vehiculo WHERE VIN=\"$vin\" ";
 
 			$r=$this->driver->query($query);
-		
+			var_dump($r);
 			if($r !== FALSE)
 				return TRUE;
 			return $r;
