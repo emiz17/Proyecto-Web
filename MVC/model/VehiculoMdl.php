@@ -67,10 +67,7 @@
 
 			$r=$this->driver->query($query);
 
-			/*while($row=$r->fetch_assoc())
-				$rows[]=$row;
-
-			return $rows;*/
+			
 			$row=$r->fetch_assoc();
 
 			if($row===NULL)
@@ -107,17 +104,24 @@
 		*************************************************/
 		function eliminar($vin){
 			//se elimmina de la base de datos
-			$query="DELETE FROM Vehiculo WHERE VIN=\"$vin\" ";
+			$query1="SELECT VIN FROM Vehiculo WHERE VIN=\"$vin\"";
+			$query2="DELETE FROM Vehiculo WHERE VIN=\"$vin\"";
 
-			$r=$this->driver->query($query);
-			var_dump($r);
-			if($r !== FALSE)
-				return TRUE;
+			$r=$this->driver->query($query1);
+			if($r->num_rows!==0) {
+
+				$r=$this->driver->query($query2);
+
+				if($r !== FALSE)
+					$r=TRUE;
+
+			}else{
+				$r=FALSE;
+			}//fin del if-else
 			return $r;
+		}//fin del function eliminar
 
-		}
-
-	}
+	}//fin de clase
 
 
 ?>

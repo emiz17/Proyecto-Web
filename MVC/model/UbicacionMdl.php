@@ -12,6 +12,12 @@
 		}
 
 
+		function connection_successful(){
+			if(!$this->driver->connect_errno)
+				return TRUE;
+			return FALSE;
+		}
+
 		/************************************************
 		*					INSERT 						*
 		*************************************************/
@@ -23,10 +29,11 @@
 					VALUES ( \"$ubicacion\", \"$movidoPor\", \"$motivo\", \"$fecha\", \"$hora\", \"$vin\" )";
 
 			$r=$this->driver->query($query);
-		
+
 			if($r !== FALSE)
 				return TRUE;
 			return $r;
+
 		}
 
 
@@ -53,17 +60,18 @@
 		/************************************************
 		*					 SHOW 						* 
 		*************************************************/
-		function mostrarUbicacion($vin){
+		function mostrarDatos($vin){
 			//se busca en la base de datos	
 			$query="SELECT * FROM Ubicacion WHERE VIN=\"$vin\" ";
 
 			$r=$this->driver->query($query);
 
-			/*while($row=$r->fetch_assoc())
-				$rows[]=$row;
+			$row=$r->fetch_assoc();
 
-			return $rows;*/
-			return $row=$r->fetch_assoc();
+			if($row===NULL)
+				$row=FALSE;
+
+			return $row;
 
 		}
 
@@ -71,7 +79,8 @@
 		/************************************************
 		*					SHOW ALL 					*
 		*************************************************/
-		function mostrarUbicacionTodos(){
+		function mostrarTodos(){
+			$rows=FALSE;
 			
 			$query='SELECT * FROM Ubicacion';
 
@@ -80,6 +89,9 @@
 			while($row=$r->fetch_assoc())
 				$rows[]=$row;
 
+			if($rows===NULL)
+				$rows=FALSE;
+			
 			return $rows;
 
 		}

@@ -1,11 +1,11 @@
 <H1>INDEX</H1>
 
-<H4>Vehiculos | Inventario | Ubicacion</H4>
+<H4>Vehiculos | Inventario | Ubicacion | Golpes</H4>
 
 <?php
 	//url params:
 	//ctl -> vehiculos, inventario, ubicacion
-	//act -> alta, baja, vista
+	//act -> alta, mostrar, mostrarTodos, eliminar(Solo para vehiculo)
 	$ctl=isset($_GET['ctl'])?$_GET['ctl']:"";
 	switch($ctl){
 		case "vehiculos":
@@ -25,7 +25,7 @@
 			$obj=new UbicacionCtl();
 		break;
 		default:
-			require_once("index.php");
+			require_once("view/Default.php");
 			$obj=null;
 	}
 	

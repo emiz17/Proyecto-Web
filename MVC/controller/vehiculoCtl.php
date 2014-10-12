@@ -62,7 +62,7 @@ Class VehiculoCtl{
 					//Se muestran los datos actuales
 					$result=$this -> model -> mostrarDatos($vin);
 
-					if ($result!==NULL) {
+					if ($result!==FALSE) {
 						require_once("view/ShowVehiculo.php");
 						echo "<br><br>Inserte el/los campos a modificar:<br>";
 					}else{
@@ -72,7 +72,7 @@ Class VehiculoCtl{
 					}
 
 
-					if ($result!==NULL) {			
+					if ($result!==FALSE) {			
 						if(!empty($_POST['marca'])||!empty($_POST['modelo'])||!empty($_POST['color'])){
 							//Se escribiran de nuevo los datos insertados
 							$marca = isset($_POST["marca"])?$_POST["marca"]:$result['marca'];
