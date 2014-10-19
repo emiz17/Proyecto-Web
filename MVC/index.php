@@ -1,11 +1,16 @@
 <H1>INDEX</H1>
 
-<H4>Vehiculos | Inventario | Ubicacion | Golpes</H4>
+<H4>Vehiculos | Inventario | Ubicacion | Golpes | Usuarios | Empleados | Clientes </H4>
 
 <?php
 	//url params:
 	//ctl -> vehiculos, inventario, ubicacion
 	//act -> alta, mostrar, mostrarTodos, eliminar(Solo para vehiculo)
+	$sesion=0;
+	session_start();
+	require_once("controller/sesionesCtl.php");
+	$comprueba= new SesionesCtl();
+	$comprueba->comprobarSesion();
 	$ctl=isset($_GET['ctl'])?$_GET['ctl']:"";
 	switch($ctl){
 		case "vehiculos":

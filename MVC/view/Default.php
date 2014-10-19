@@ -1,3 +1,8 @@
 <?php
-	echo "ERROR:<BR>Link equivocado";
+	echo "<pre>
+
+	
+	 PAGINA PRINCIPAL
+
+	Inspeccion de vehiculos<pre/>";
 ?>
