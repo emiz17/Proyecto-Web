@@ -29,6 +29,18 @@
 			require_once("controller/ubicacionCtl.php");
 			$obj=new UbicacionCtl();
 		break;
+		case "usuario":
+			require_once("controller/usuarioCtl.php");
+			$obj=new UbicacionCtl();
+		break;
+		case "cliente":
+			require_once("controller/clienteCtl.php");
+			$obj=new UbicacionCtl();
+		break;
+		case "empleado":
+			require_once("controller/empleadoCtl.php");
+			$obj=new UbicacionCtl();
+		break;
 		default:
 			require_once("view/Default.php");
 			$obj=null;
