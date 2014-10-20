@@ -5,9 +5,14 @@ Class VehiculoCtl{
 	public function execute(){
 		require_once("model/VehiculoMdl.php");
 		$this -> model = new VehiculoMdl();
+		require_once("controller/sesionesCtl.php");
+		$comprueba= new SesionesCtl();
+
 		$act=isset($_GET['act'])?$_GET['act']:"";
+		if($comprueba->isLogged()){
 		switch ($act){
 			case "alta":
+			if($comprueba->isAdmin()){
 				if(empty($_POST)){
 					if($this->model->connection_successful())
 						require_once("view/IngresaDatos.php");
@@ -47,8 +52,12 @@ Class VehiculoCtl{
 						require_once("view/ErrorOperacion.php");
 					}//fin del if ($res)
 				}//fin del primer else
+			}
+			else
+				echo "No tienes los permisos para realizar esta operacion";
 			break;
 			case "modificar":
+			if($comprueba->isAdmin())|| $comprueba->isEmpleado(){
 				if(empty($_POST)){
 					//Cargo la vista de agrega datos
 					if($this->model->connection_successful())
@@ -96,8 +105,12 @@ Class VehiculoCtl{
 					}//fin del if ($result!==NULL)
 					
 				}//fin del else del if(empty($_POST))
+			}
+			else
+				echo "No tienes los permisos para realizar esta operacion";
 			break;	
 			case "mostrar":
+			if($comprueba->isAdmin()|| $comprueba->isEmpleado() || $comprueba->isCliente()){
 				if(empty($_POST)){
 					//Cargo la vista de agrega datos
 					if($this->model->connection_successful())
@@ -133,10 +146,14 @@ Class VehiculoCtl{
 					}//fin del if ($vin!==FALSE)
 
 				}//fin de else
+			}
+			else 
+				echo "No tienes los permisos para realizar esta operacion";
 			break;
 			case "mostrarTodos":
 					//despues se contara con un diccionario 
 					//para saber que dato nos proporciona el vin y mostrarlos
+			if($comprueba->isAdmin() || $comprueba->isEmpleado()){
 				if($this->model->connection_successful()){
 					$result= $this -> model -> mostrarTodos();
 					if ($result!==FALSE) {			
@@ -145,8 +162,12 @@ Class VehiculoCtl{
 						require_once("view/ErrorOperacion.php");
 					}
 				}
+			}
+			else 
+				echo "No tienes los permisos para realizar esta operacion";
 			break;
 			case "eliminar":
+			if($comprueba->isAdmin()){
 					if(empty($_POST)){
 						//Cargo la vista de agrega datos
 						if($this->model->connection_successful())
@@ -167,10 +188,18 @@ Class VehiculoCtl{
 							require_once("view/ErrorOperacion.php");
 						}//Fin de if ($vin!==FALSE)
 					}//Fin del if(empty($_POST))
+				}
+				else
+					echo "No tienes los permisos para realizar esta operacion";
 				break;
 				default:
 					require_once("view/Default.php");
 			}//Fin de switch
+		}//fin de if logged
+		else{
+			echo 'Necesitas ingresar al sistema <br>';
+			echo '<a href="controller/loginCtl.php?usuario=pedro&pass=ge">Clic para hacer login</a>';
+		}
 
 		}//Fin de function execute
 

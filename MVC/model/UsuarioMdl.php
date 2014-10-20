@@ -124,10 +124,10 @@
 		/************************************************
 		*					OBTENER CORREO 					*
 		*************************************************/
-		function obtenerTipo($idUsuario){
+		function obtenerTipo($Usuario){
 			$row=FALSE;
 
-			$query="SELECT tipoUsuario FROM usuarios WHERE id=\"$idUsuario\" ";
+			$query="SELECT tipoUsuario FROM usuarios WHERE nomUsuario=\"$Usuario\" ";
 
 			$r=$this->driver->query($query);
 
@@ -136,6 +136,24 @@
 
 			if($row===NULL)
 				$row=FALSE;
+
+			return $row;
+		}
+
+		function existeUsuario($Usuario, $pass){
+			$row=FALSE;
+
+			$query="SELECT COUNT(*) FROM usuarios WHERE nomUsuario=\"$Usuario\" AND clave=\"$pass\" ";
+
+			$r=$this->driver->query($query);
+
+			
+			$row=$r->fetch_assoc();
+
+			if($row===NULL)
+				$row=FALSE
+			else 
+				$row=TRUE;
 
 			return $row;
 		}
