@@ -31,15 +31,15 @@
 		break;
 		case "usuario":
 			require_once("controller/usuarioCtl.php");
-			$obj=new UbicacionCtl();
+			$obj=new UsuarioCtl();
 		break;
 		case "cliente":
 			require_once("controller/clienteCtl.php");
-			$obj=new UbicacionCtl();
+			$obj=new ClienteCtl();
 		break;
 		case "empleado":
 			require_once("controller/empleadoCtl.php");
-			$obj=new UbicacionCtl();
+			$obj=new EmpleadoCtl();
 		break;
 		default:
 			require_once("view/Default.php");
