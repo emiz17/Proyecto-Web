@@ -76,7 +76,7 @@ Class UsuarioCtl{
 							addslashes($tipoUsuario);
 							addslashes($status);
 
-							$result=$this -> model -> modificar($nombreUsuario, $clave, $tipoUsuario, $status);
+							$result=$this -> model -> modificar($idUsuario,$nombreUsuario, $clave, $tipoUsuario, $status);
 							if($result!==FALSE){
 							    require_once("view/ModifyUsuario.php");
 							}

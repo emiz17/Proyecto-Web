@@ -82,7 +82,7 @@ Class ClienteCtl{
 							addslashes($idLogin);
 
 
-							$result=$this -> model -> modificar($domicilio, $telefono, $correo, $idLogin);
+							$result=$this -> model -> modificar($idCliente,$domicilio, $telefono, $correo, $idLogin);
 							if($result!==FALSE){
 							    require_once("view/ModifyCliente.php");
 							}
