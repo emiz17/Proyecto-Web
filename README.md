@@ -29,4 +29,4 @@ Cada uno de estos puede o no tener además ubicaciones en forma de tablero, ejem
 
 
 #LIGA DEL SERVIDOR
-* Servidor: [http://vehiculoproyectoweb.co.nf/](http://vehiculoproyectoweb.co.nf/)
+* Servidor: [http://websolutionsteam.cf/](http://websolutionsteam.cf/)
