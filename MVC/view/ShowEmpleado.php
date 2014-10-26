@@ -3,14 +3,14 @@
 	echo "---------------------------------------------------------------------------------------------------------------------------------------<br>";
 	echo "......ID........|....NOMBRE....|...AP. PATERNO...|...AP. MATERNO...|......DOMICILIO........|...TELEFONO...|...CORREO...|...ID LOGIN...|<br>";
 	echo "---------------------------------------------------------------------------------------------------------------------------------------<br>";
-	echo "...." . $result[$i]['id'] . ".....";
-	echo "....." . $result[$i]['nombres'] . ".....";
-	echo "....." . $result[$i]['apPaterno'] . ".....";
-	echo "...." . $result[$i]['apMaterno'] . ".....";
-	echo "...." . $result[$i]['domicilio'] . ".....";
-	echo "...." . $result[$i]['telefono'] . ".....";
-	echo "...." . $result[$i]['correo'] . ".....";
-	echo "...." . $result[$i]['idLogin'] . ".....";
+	echo "...." . $result['id'] . ".....";
+	echo "....." . $result['nombres'] . ".....";
+	echo "....." . $result['apPaterno'] . ".....";
+	echo "...." . $result['apMaterno'] . ".....";
+	echo "...." . $result['domicilio'] . ".....";
+	echo "...." . $result['telefono'] . ".....";
+	echo "...." . $result['correo'] . ".....";
+	echo "...." . $result['idLogin'] . ".....";
 	echo "<br>";
 	
 ?>
