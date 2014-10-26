@@ -54,10 +54,10 @@ Class VehiculoCtl{
 				}//fin del primer else
 			}
 			else
-				echo "No tienes los permisos para realizar esta operacion";
+				echo "<br>No tienes los permisos para realizar esta operacion";
 			break;
 			case "modificar":
-			if($comprueba->isAdmin())|| $comprueba->isEmpleado(){
+			if($comprueba->isAdmin() || $comprueba->isEmpleado()){
 				if(empty($_POST)){
 					//Cargo la vista de agrega datos
 					if($this->model->connection_successful())
@@ -107,7 +107,7 @@ Class VehiculoCtl{
 				}//fin del else del if(empty($_POST))
 			}
 			else
-				echo "No tienes los permisos para realizar esta operacion";
+				echo "<br>No tienes los permisos para realizar esta operacion";
 			break;	
 			case "mostrar":
 			if($comprueba->isAdmin()|| $comprueba->isEmpleado() || $comprueba->isCliente()){
@@ -148,7 +148,7 @@ Class VehiculoCtl{
 				}//fin de else
 			}
 			else 
-				echo "No tienes los permisos para realizar esta operacion";
+				echo "<br>No tienes los permisos para realizar esta operacion";
 			break;
 			case "mostrarTodos":
 					//despues se contara con un diccionario 
@@ -164,7 +164,7 @@ Class VehiculoCtl{
 				}
 			}
 			else 
-				echo "No tienes los permisos para realizar esta operacion";
+				echo "<br>No tienes los permisos para realizar esta operacion";
 			break;
 			case "eliminar":
 			if($comprueba->isAdmin()){
@@ -190,14 +190,14 @@ Class VehiculoCtl{
 					}//Fin del if(empty($_POST))
 				}
 				else
-					echo "No tienes los permisos para realizar esta operacion";
+					echo "<br>No tienes los permisos para realizar esta operacion";
 				break;
 				default:
 					require_once("view/Default.php");
 			}//Fin de switch
 		}//fin de if logged
 		else{
-			echo 'Necesitas ingresar al sistema <br>';
+			echo "<br>Aun no has ingresado al sistema <br>";
 			echo '<a href="controller/loginCtl.php?usuario=pedro&pass=ge">Clic para hacer login</a>';
 		}
 

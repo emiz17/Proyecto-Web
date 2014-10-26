@@ -70,6 +70,7 @@
 			
 			$row=$r->fetch_assoc();
 
+
 			if($row===NULL)
 				$row=FALSE;
 
@@ -134,31 +135,26 @@
 			
 			$row=$r->fetch_assoc();
 
-			if($row===NULL)
-				$row=FALSE;
-
-			return $row;
+			return $row['tipoUsuario'];
 		}
 
-		function existeUsuario($Usuario, $pass){
+		function existeUsuario($usuario, $pass){
 			$row=FALSE;
 
-			$query="SELECT COUNT(*) FROM usuarios WHERE nomUsuario=\"$Usuario\" AND clave=\"$pass\" ";
+			$query="SELECT COUNT(*) AS cont FROM usuarios WHERE nomUsuario=\"$usuario\" AND clave=\"$pass\" ";
 
 			$r=$this->driver->query($query);
 
 			
 			$row=$r->fetch_assoc();
-
-			if($row===NULL)
-				$row=FALSE
+			//var_dump($row); 
+			//echo "<br>cont:  " .$row['cont'];
+			if($row['cont']==0)
+				$row=false;
 			else 
-				$row=TRUE;
-
+				$row=true;
 			return $row;
 		}
 
 	}//fin de clase
-
-
 ?>

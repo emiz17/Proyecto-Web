@@ -47,7 +47,7 @@
 					echo "No tienes los permisos para realizar esta operacion";
 				break;
 				case "modificar":
-				if($comprueba->isAdmin())|| $comprueba->isEmpleado(){
+				if($comprueba->isAdmin() || $comprueba->isEmpleado()){
 					if(empty($_POST)){
 						//Cargo la vista de agrega datos
 						if($this->model->connection_successful())
