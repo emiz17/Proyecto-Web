@@ -25,6 +25,7 @@ Class LoginCtl{
 			$_SESSION['usuario'] = $usuario;
 			$_SESSION['clave'] = $pass;
 			$_SESSION['type'] =$this->obtenerTipo($usuario);
+
 			echo '<a href="../index.php">Clic para regresar al index</a>';
 		}
 		else{
@@ -72,8 +73,8 @@ Class LoginCtl{
 
 			
 			$row=$r->fetch_assoc();
-
-			return $row['tipoUsuario'];
+			//var_dump($row['tipo_usuario']);
+			return $row['tipo_usuario'];
 		}
 
 }
