@@ -6,7 +6,7 @@
 
 		function __construct(){
 			$host=$user=$pass=$db='';
-			require_once("../config.inc");
+			require_once("config.inc");
 			$this->driver=new mysqli($host, $user, $pass, $db);
 			if($this->driver->connect_errno)
 				require_once("view/ShowErrorConexion.php");
@@ -122,39 +122,8 @@
 			return $r;
 		}//fin del function eliminar
 
-		/************************************************
-		*					OBTENER CORREO 					*
-		*************************************************/
-		function obtenerTipo($Usuario){
-			$row=FALSE;
+		
 
-			$query="SELECT tipo_usuario FROM usuario WHERE usuario=\"$Usuario\" ";
-
-			$r=$this->driver->query($query);
-
-			
-			$row=$r->fetch_assoc();
-
-			return $row['tipoUsuario'];
-		}
-
-		function existeUsuario($usuario, $pass){
-			$row=FALSE;
-
-			$query="SELECT COUNT(*) AS cont FROM usuario WHERE usuario=\"$usuario\" AND clave=\"$pass\" ";
-
-			$r=$this->driver->query($query);
-			var_dump($r);
-			
-			$row=$r->fetch_assoc();
-			//var_dump($row); 
-			//echo "<br>cont:  " .$row['cont'];
-			if($row['cont']==0)
-				$row=false;
-			else 
-				$row=true;
-			return $row;
-		}
 
 	}//fin de clase
 ?>
