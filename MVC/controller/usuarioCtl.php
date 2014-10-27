@@ -7,6 +7,8 @@ Class UsuarioCtl{
 		$this -> model = new UsuarioMdl();
 		require_once("controller/sesionesCtl.php");
 		$comprueba= new SesionesCtl();
+		require_once("model/MailMdl.php");
+		$mail= new MailMdl();
 
 		$act=isset($_GET['act'])?$_GET['act']:"";
 		if($comprueba->isLogged()){
@@ -36,6 +38,13 @@ Class UsuarioCtl{
 						$resultado = $this -> model -> alta($nombreUsuario, $clave, $tipoUsuario, $status);
 						if($resultado!==FALSE){
 						    require_once("view/AddUsuario.php");
+						    
+						    //Preparamos datos para enviar el mail
+						    $asunto="Bienvenido a WEB Solutions Team Vehiculo Project";
+						    $mensaje="Gracias por elegirnos como su mejor opcion para guardar su coche.\n 
+						    Disafrute su dia y nosotros nos encargamos de que su auto se encuentre seguro.";
+						    $mail->sendEmail($nombreUsuario, $asunto, $mensaje)
+
 						}else{
 							require_once("view/ErrorOperacion.php");
 						}//fin del if($resultado!==FALSE)
