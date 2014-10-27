@@ -14,11 +14,11 @@ Class LoginCtl{
 			$_SESSION['usuario'] = $usuario;
 			$_SESSION['clave'] = $pass;
 			$_SESSION['type'] =$this -> model->obtenerTipo($usuario);
-			echo '<a href="index.php">Clic para regresar al index</a>';
+			echo '<a href="../index.php">Clic para regresar al index</a>';
 		}
 		else{
 			echo "Usuario o Password incorrectos<br>";
-			echo '<a href="index.php">Clic para regresar al index</a>';
+			echo '<a href="../index.php">Clic para regresar al index</a>';
 		}
 	}
 }
