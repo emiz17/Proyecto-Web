@@ -6,7 +6,7 @@
 
 		function __construct(){
 			$host=$user=$pass=$db='';
-			require_once("config.inc");
+			require_once("../config.inc");
 			$this->driver=new mysqli($host, $user, $pass, $db);
 			if($this->driver->connect_errno)
 				require_once("view/ShowErrorConexion.php");

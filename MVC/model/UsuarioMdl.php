@@ -6,7 +6,7 @@
 
 		function __construct(){
 			$host=$user=$pass=$db='';
-			require_once("config.inc");
+			require_once("../config.inc");
 			$this->driver=new mysqli($host, $user, $pass, $db);
 			if($this->driver->connect_errno)
 				require_once("view/ShowErrorConexion.php");
@@ -26,7 +26,7 @@
 			
 			//insertarlos en la base de datos generando un query y posteriormente
 			//ejecutandolo
-			$query="INSERT INTO usuarios (nomUsuario, clave, tipoUsuario, status)
+			$query="INSERT INTO usuario (usuario, clave, tipoUsuario, status)
 					VALUES ( \"$nombreUsuario\", \"$clave\", \"$tipoUsuario\",\"$status\" )";
 
 			$r=$this->driver->query($query);
@@ -44,8 +44,8 @@
 
 			//insertarlos en la base de datos generando un query y posteriormente
 			//ejecutandolo
-			$query="UPDATE usuarios SET nomUsuario=\"$nomUsuario\", clave=\"$clave\", tipoUsuario=\"$tipoUsuario\", status=\"$status\"
-			WHERE id=\"$idUsuario\" ";
+			$query="UPDATE usuario SET clave=\"$clave\", tipo_usuario=\"$tipoUsuario\", status=\"$status\"
+			WHERE usuario=\"$idUsuario\" ";
 
 			$r=$this->driver->query($query);
 		
@@ -63,7 +63,7 @@
 		
 			$row=FALSE;
 
-			$query="SELECT * FROM usuarios WHERE id=\"$idUsuario\" ";
+			$query="SELECT * FROM usuario WHERE usuario=\"$idUsuario\" ";
 
 			$r=$this->driver->query($query);
 
@@ -86,7 +86,7 @@
 
 			$rows=FALSE;
 
-			$query='SELECT * FROM usuarios';
+			$query='SELECT * FROM usuario';
 
 			$r=$this->driver->query($query);
 
@@ -105,8 +105,8 @@
 		*************************************************/
 		function eliminar($idUsuario){
 			//se elimmina de la base de datos
-			$query1="SELECT id FROM usuarios WHERE id=\"$idUsuario\"";
-			$query2="DELETE FROM usuarios WHERE id=\"$idUsuario\"";
+			$query1="SELECT usuario FROM usuario WHERE usuario=\"$idUsuario\"";
+			$query2="DELETE FROM usuario WHERE usuario=\"$idUsuario\"";
 
 			$r=$this->driver->query($query1);
 			if($r->num_rows!==0) {
@@ -128,7 +128,7 @@
 		function obtenerTipo($Usuario){
 			$row=FALSE;
 
-			$query="SELECT tipoUsuario FROM usuarios WHERE nomUsuario=\"$Usuario\" ";
+			$query="SELECT tipo_usuario FROM usuario WHERE usuario=\"$Usuario\" ";
 
 			$r=$this->driver->query($query);
 
@@ -141,10 +141,10 @@
 		function existeUsuario($usuario, $pass){
 			$row=FALSE;
 
-			$query="SELECT COUNT(*) AS cont FROM usuarios WHERE nomUsuario=\"$usuario\" AND clave=\"$pass\" ";
+			$query="SELECT COUNT(*) AS cont FROM usuario WHERE usuario=\"$usuario\" AND clave=\"$pass\" ";
 
 			$r=$this->driver->query($query);
-
+			var_dump($r);
 			
 			$row=$r->fetch_assoc();
 			//var_dump($row); 
