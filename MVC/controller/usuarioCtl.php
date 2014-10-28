@@ -28,14 +28,17 @@ Class UsuarioCtl{
 				    $clave = isset($_POST["clave"])?($_POST["clave"]!=="")?$_POST["clave"]:$res=FALSE:$res=FALSE;
 					$tipoUsuario= isset($_POST["tipoUsuario"])?($_POST["tipoUsuario"]!=="")?$_POST["tipoUsuario"]:$res=FALSE:$res=FALSE;
 					$status = isset($_POST["status"])?($_POST["status"]!=="")?$_POST["status"]:$res=FALSE:$res=FALSE;
+					$email = isset($_POST["email"])?($_POST["email"]!=="")?$_POST["email"]:$res=FALSE:$res=FALSE;
 
 					addslashes($nombreUsuario);
 					addslashes($clave);
 					addslashes($tipoUsuario);
 					addslashes($status);
+					addslashes($email);
 
 					if ($res) {
-						$resultado = $this -> model -> alta($nombreUsuario, $clave, $tipoUsuario, $status);
+						$resultado = $this -> model -> alta($nombreUsuario, $clave, $tipoUsuario, $status, $email);
+
 						if($resultado!==FALSE){
 						    require_once("view/AddUsuario.php");
 						    
@@ -43,7 +46,7 @@ Class UsuarioCtl{
 						    $asunto="Bienvenido a WEB Solutions Team Vehiculo Project";
 						    $mensaje="Gracias por elegirnos como su mejor opcion para guardar su coche.\n 
 						    Disafrute su dia y nosotros nos encargamos de que su auto se encuentre seguro.";
-						    $mail->sendEmail($nombreUsuario, $asunto, $mensaje)
+						    $mail->sendEmail($nombreUsuario, $asunto, $mensaje);
 
 						}else{
 							require_once("view/ErrorOperacion.php");
@@ -82,19 +85,22 @@ Class UsuarioCtl{
 
 
 					if ($result!==FALSE) {			
-						if(!empty($_POST['nombreUsuario'])||!empty($_POST['clave'])||!empty($_POST['tipoUsuario'])||!empty($_POST['status'])){
+						if(!empty($_POST['nombreUsuario'])||!empty($_POST['clave'])||!empty($_POST['tipoUsuario'])||!empty($_POST['status'])||!empty($_POST['email'])){
 							//Se escribiran de nuevo los datos insertados
 							$nombreUsuario= isset($_POST["nombreUsuario"])?$_POST["nombreUsuario"]:$result['nombreUsuario'];
 							$clave = isset($_POST["clave"])?$_POST["clave"]:$result['clave'];
 							$tipoUsuario = isset($_POST["tipoUsuario"])?$_POST["tipoUsuario"]:$result['tipoUsuario'];
 							$status  = isset($_POST["status "])?$_POST["status "]:$result['status '];
+							$email = isset($_POST["email"])?($_POST["email"]!=="")?$_POST["email"]:$res=FALSE:$res=FALSE;
 
 							addslashes($nombreUsuario);
 							addslashes($clave);
 							addslashes($tipoUsuario);
 							addslashes($status);
+							addslashes($email);
 
-							$result=$this -> model -> modificar($usuario, $clave, $tipoUsuario, $status);
+
+							$result=$this -> model -> modificar($usuario, $clave, $tipoUsuario, $status, $email);
 							if($result!==FALSE){
 							    require_once("view/ModifyUsuario.php");
 							}

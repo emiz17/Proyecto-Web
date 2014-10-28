@@ -9,6 +9,7 @@
 	echo "....." . $result['clave'] . ".....";
 	echo "...." . $result['tipoUsuario'] . ".....";
 	echo "...." . $result['status'] . ".....";
+	echo "...." . $result['email'] . ".....";
 	echo "<br>";
 	
 ?>

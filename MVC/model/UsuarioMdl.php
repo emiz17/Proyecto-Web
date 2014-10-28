@@ -22,14 +22,15 @@
 		/************************************************
 		*					INSERT 						*
 		*************************************************/
-		function alta($nombreUsuario, $clave, $tipoUsuario, $status){
+		function alta($usuario, $clave, $tipoUsuario, $status, $email){
 			
 			//insertarlos en la base de datos generando un query y posteriormente
 			//ejecutandolo
-			$query="INSERT INTO usuario (usuario, clave, tipoUsuario, status)
-					VALUES ( \"$nombreUsuario\", \"$clave\", \"$tipoUsuario\",\"$status\" )";
+			$query="INSERT INTO usuario (usuario, clave, tipo_usuario, status, email)
+					VALUES ( \"$usuario\", \"$clave\", \"$tipoUsuario\",\"$status\", \"$email\" )";
 
 			$r=$this->driver->query($query);
+
 			if($r !== FALSE)
 				return TRUE;
 			return $r;
@@ -39,13 +40,13 @@
 		/************************************************
 		*					MODIFY 						*
 		*************************************************/
-		public function modificar($idUsuario,$nombreUsuario, $clave, $tipoUsuario, $status){
+		public function modificar($usuario, $clave, $tipoUsuario, $status, $email){
 			$r=FALSE;
 
 			//insertarlos en la base de datos generando un query y posteriormente
 			//ejecutandolo
-			$query="UPDATE usuario SET clave=\"$clave\", tipo_usuario=\"$tipoUsuario\", status=\"$status\"
-			WHERE usuario=\"$idUsuario\" ";
+			$query="UPDATE usuario SET clave=\"$clave\", tipo_usuario=\"$tipoUsuario\", status=\"$status\", email=\"$email\" 
+			WHERE usuario=\"$usuario\" ";
 
 			$r=$this->driver->query($query);
 		
@@ -59,11 +60,11 @@
 		/************************************************
 		*					 SHOW 						* 
 		*************************************************/
-		function mostrarDatos($idUsuario){
+		function mostrarDatos($usuario){
 		
 			$row=FALSE;
 
-			$query="SELECT * FROM usuario WHERE usuario=\"$idUsuario\" ";
+			$query="SELECT * FROM usuario WHERE usuario=\"$usuario\" ";
 
 			$r=$this->driver->query($query);
 
@@ -103,10 +104,10 @@
 		/************************************************
 		*					DELETE  					*
 		*************************************************/
-		function eliminar($idUsuario){
+		function eliminar($usuario){
 			//se elimmina de la base de datos
-			$query1="SELECT usuario FROM usuario WHERE usuario=\"$idUsuario\"";
-			$query2="DELETE FROM usuario WHERE usuario=\"$idUsuario\"";
+			$query1="SELECT usuario FROM usuario WHERE usuario=\"$usuario\"";
+			$query2="DELETE FROM usuario WHERE usuario=\"$usuario\"";
 
 			$r=$this->driver->query($query1);
 			if($r->num_rows!==0) {

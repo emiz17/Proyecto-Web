@@ -10,6 +10,7 @@
 		echo "....." . $result[$i]['clave'] . ".....";
 		echo "...." . $result[$i]['tipoUsuario'] . ".....";
 		echo "...." . $result[$i]['status'] . ".....";
+		echo "...." . $result[$i]['email'] . ".....";
 		echo "<br>";
 	}
 	
