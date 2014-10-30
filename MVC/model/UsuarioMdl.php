@@ -125,6 +125,35 @@
 
 		
 
+		function getEmail($usuario){
+			//se busca en la base de datos	
+			$query="SELECT email FROM usuario WHERE usuario=\"$usuario\" ";
+
+			$r=$this->driver->query($query);
+
+			$row=$r->fetch_assoc();
+
+			if($row===NULL)
+				$row=FALSE;
+
+			return $row['email'];
+
+		}
+
+
+	function sendEmail($to, $usuario, $asunto, $mensaje){
+		//$to=$this->getEmail($usuario);
+		$headers = 'From: admin@websolutionsteam.cf' . "\r\n" .
+    	'Reply-To: admin@websolutionsteam.cf' . "\r\n" .
+    	'X-Mailer: PHP/' . phpversion();
+
+		if(mail($to, $asunto, $mensaje, $headers))
+			echo "Mensaje enviado exitosamente.";
+		else
+			echo "Ocurrio un error al enviar el archivo";
+
+	}//fin de function send
+
 
 	}//fin de clase
 ?>
