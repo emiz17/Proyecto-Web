@@ -2,7 +2,9 @@
 	echo "<pre>
 
 	
-	 PAGINA PRINCIPAL
+	ERROR 404
 
-	Inspeccion de vehiculos<pre/>";
+	Pagina no encontrada.
+	Link incorrecto.
+	<pre/>";
 ?>

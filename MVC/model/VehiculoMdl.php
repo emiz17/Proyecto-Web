@@ -22,12 +22,12 @@
 		/************************************************
 		*					INSERT 						*
 		*************************************************/
-		function alta($vin,$marca,$modelo,$color){
+		function alta($vin,$marca,$modelo,$color, $idCliente){
 			
 			//insertarlos en la base de datos generando un query y posteriormente
 			//ejecutandolo
-			$query="INSERT INTO Vehiculo (VIN, marca, modelo, color)
-					VALUES ( \"$vin\", \"$marca\", \"$modelo\", \"$color\" )";
+			$query="INSERT INTO Vehiculo (VIN, marca, modelo, color, idCliente)
+					VALUES ( \"$vin\", \"$marca\", \"$modelo\", \"$color\", \"$idCliente\" )";
 
 			$r=$this->driver->query($query);
 			if($r !== FALSE)

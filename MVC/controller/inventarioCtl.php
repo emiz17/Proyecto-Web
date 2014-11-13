@@ -24,8 +24,8 @@
 						$res=TRUE;	
 
 					    $vin = isset($_POST["vin"])?($_POST["vin"]!=="")?$_POST["vin"]:$res=FALSE:$res=FALSE;
-					    $marca = isset($_POST["kilometraje"])?($_POST["kilometraje"]!=="")?$_POST["kilometraje"]:$res=FALSE:$res=FALSE;
-						$modelo = isset($_POST["combustible"])?($_POST["combustible"]!=="")?$_POST["combustible"]:$res=FALSE:$res=FALSE;
+					    $kilometraje = isset($_POST["kilometraje"])?($_POST["kilometraje"]!=="")?$_POST["kilometraje"]:$res=FALSE:$res=FALSE;
+						$combustible = isset($_POST["combustible"])?($_POST["combustible"]!=="")?$_POST["combustible"]:$res=FALSE:$res=FALSE;
 						
 						addslashes($vin);
 						addslashes($kilometraje);

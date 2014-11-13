@@ -1,6 +1,6 @@
 <H1>INDEX</H1>
 
-<H4>Vehiculos | Inventario | Ubicacion | Golpes | Usuarios | Empleados | Clientes </H4>
+<H4>Vehiculos | Inventario | Ubicacion | Golpes | Usuario | Empleado | Cliente </H4>
 
 <?php
 	//url params:
@@ -13,7 +13,7 @@
 	$comprueba->comprobarSesion();
 	$ctl=isset($_GET['ctl'])?$_GET['ctl']:"";
 	switch($ctl){
-		case "vehiculos":
+		case "vehiculo":
 			require_once("controller/vehiculoCtl.php");
 			$obj= new VehiculoCtl();
 		break;
@@ -21,7 +21,7 @@
 			require_once("controller/inventarioCtl.php");
 			$obj=new InventarioCtl();
 		break;
-		case "golpes":
+		case "golpe":
 			require_once("controller/golpeCtl.php");
 			$obj=new GolpeCtl();
 		break;
@@ -42,7 +42,7 @@
 			$obj=new EmpleadoCtl();
 		break;
 		default:
-			require_once("view/Default.php");
+			require_once("index.php");
 			$obj=null;
 	}
 	

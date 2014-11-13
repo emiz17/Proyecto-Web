@@ -22,12 +22,12 @@
 		/************************************************
 		*					INSERT 						*
 		*************************************************/
-		function alta($nombre, $apPaterno, $apMaterno, $domicilio, $telefono, $correo, $idLogin){
+		function alta($nombre, $apellidos, $domicilio, $telefono, $usuario){
 			
 			//insertarlos en la base de datos generando un query y posteriormente
 			//ejecutandolo
-			$query="INSERT INTO clientes (nombres, apMaterno, apPaterno, domicilio, telefono, correo, idLogin)
-					VALUES ( \"$nombres\", \"$apMaterno\", \"$apPaterno\", \"$domicilio\", \"$telefono\", \"$correo\", \"$idLogin\" )";
+			$query="INSERT INTO Cliente (nombre, apellidos, domicilio, telefono, usuario)
+					VALUES ( \"$nombre\", \"$apellidos\", \"$domicilio\", \"$telefono\", \"$usuario\" )";
 
 			$r=$this->driver->query($query);
 			if($r !== FALSE)
@@ -39,13 +39,13 @@
 		/************************************************
 		*					MODIFY 						*
 		*************************************************/
-		public function modificar($idCliente,$domicilio, $telefono, $correo, $idLogin){
+		public function modificar($idCliente, $nombre, $apellidos, $domicilio, $telefono){
 			$r=FALSE;
 
 			//insertarlos en la base de datos generando un query y posteriormente
 			//ejecutandolo
-			$query="UPDATE clientes SET domicilio=\"$domicilio\", telefono=\"$telefono\", correo=\"$correo\", idLogin=\"$idLogin\"
-			WHERE id=\"$idCliente\" ";
+			$query="UPDATE Cliente SET nombre=\"$nombre\", apellidos=\"$apellidos\", domicilio=\"$domicilio\", telefono=\"$telefono\"
+			WHERE idCliente=\"$idCliente\" ";
 
 			$r=$this->driver->query($query);
 		
@@ -63,7 +63,7 @@
 		
 			$row=FALSE;
 
-			$query="SELECT * FROM clientes WHERE id=\"$idCliente\" ";
+			$query="SELECT * FROM Cliente WHERE idCliente=\"$idCliente\" ";
 
 			$r=$this->driver->query($query);
 
@@ -85,7 +85,7 @@
 
 			$rows=FALSE;
 
-			$query='SELECT * FROM clientes';
+			$query='SELECT * FROM Cliente';
 
 			$r=$this->driver->query($query);
 
@@ -104,8 +104,8 @@
 		*************************************************/
 		function eliminar($idCliente){
 			//se elimmina de la base de datos
-			$query1="SELECT id FROM clientes WHERE id=\"$idCliente\"";
-			$query2="DELETE FROM clientes WHERE id=\"$idCliente\"";
+			$query1="SELECT id FROM Cliente WHERE id=\"$idCliente\"";
+			$query2="DELETE FROM Cliente WHERE id=\"$idCliente\"";
 
 			$r=$this->driver->query($query1);
 			if($r->num_rows!==0) {
@@ -120,25 +120,6 @@
 			}//fin del if-else
 			return $r;
 		}//fin del function eliminar
-
-		/************************************************
-		*					OBTENER CORREO 					*
-		*************************************************/
-		function obtenerCorreo($idCliente){
-			$row=FALSE;
-
-			$query="SELECT correo FROM clientes WHERE id=\"$idCliente\" ";
-
-			$r=$this->driver->query($query);
-
-			
-			$row=$r->fetch_assoc();
-
-			if($row===NULL)
-				$row=FALSE;
-
-			return $row;
-		}
 
 	}//fin de clase
 

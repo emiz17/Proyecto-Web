@@ -1,16 +1,14 @@
 <?php
 	echo "Informacion del EMPLEADO:<br><br>";
 	echo "---------------------------------------------------------------------------------------------------------------------------------------<br>";
-	echo "......ID........|....NOMBRE....|...AP. PATERNO...|...AP. MATERNO...|......DOMICILIO........|...TELEFONO...|...CORREO...|...ID LOGIN...|<br>";
+	echo "......ID........|....NOMBRE....|.....APELLIDOS.....|......DOMICILIO........|...TELEFONO...|...USUARIO...|<br>";
 	echo "---------------------------------------------------------------------------------------------------------------------------------------<br>";
-	echo "...." . $result['id'] . ".....";
-	echo "....." . $result['nombres'] . ".....";
-	echo "....." . $result['apPaterno'] . ".....";
-	echo "...." . $result['apMaterno'] . ".....";
+	echo "...." . $result['idEmpleado'] . ".....";
+	echo "....." . $result['nombre'] . ".....";
+	echo "...." . $result['apellidos'] . ".....";
 	echo "...." . $result['domicilio'] . ".....";
 	echo "...." . $result['telefono'] . ".....";
-	echo "...." . $result['correo'] . ".....";
-	echo "...." . $result['idLogin'] . ".....";
+	echo "...." . $result['usuario'] . ".....";
 	echo "<br>";
 	
 ?>

@@ -22,12 +22,12 @@
 		/************************************************
 		*					INSERT 						*
 		*************************************************/
-		function alta($usuario, $clave, $tipoUsuario, $status, $email){
+		function alta($usuario, $clave, $tipo_usuario, $status, $email){
 			
 			//insertarlos en la base de datos generando un query y posteriormente
 			//ejecutandolo
 			$query="INSERT INTO usuario (usuario, clave, tipo_usuario, status, email)
-					VALUES ( \"$usuario\", \"$clave\", \"$tipoUsuario\",\"$status\", \"$email\" )";
+					VALUES ( \"$usuario\", \"$clave\", \"$tipo_usuario\",\"$status\", \"$email\" )";
 
 			$r=$this->driver->query($query);
 
@@ -40,12 +40,12 @@
 		/************************************************
 		*					MODIFY 						*
 		*************************************************/
-		public function modificar($usuario, $clave, $tipoUsuario, $status, $email){
+		public function modificar($usuario, $clave, $tipo_usuario, $status, $email){
 			$r=FALSE;
 
 			//insertarlos en la base de datos generando un query y posteriormente
 			//ejecutandolo
-			$query="UPDATE usuario SET clave=\"$clave\", tipo_usuario=\"$tipoUsuario\", status=\"$status\", email=\"$email\" 
+			$query="UPDATE usuario SET clave=\"$clave\", tipo_usuario=\"$tipo_usuario\", status=\"$status\", email=\"$email\" 
 			WHERE usuario=\"$usuario\" ";
 
 			$r=$this->driver->query($query);
@@ -68,9 +68,7 @@
 
 			$r=$this->driver->query($query);
 
-			
 			$row=$r->fetch_assoc();
-
 
 			if($row===NULL)
 				$row=FALSE;
@@ -141,18 +139,18 @@
 		}
 
 
-	function sendEmail($to, $usuario, $asunto, $mensaje){
-		//$to=$this->getEmail($usuario);
-		$headers = 'From: admin@websolutionsteam.cf' . "\r\n" .
-    	'Reply-To: admin@websolutionsteam.cf' . "\r\n" .
-    	'X-Mailer: PHP/' . phpversion();
+		function sendEmail($to, $usuario, $asunto, $mensaje){
+			//$to=$this->getEmail($usuario);
+			$headers = 'From: admin@websolutionsteam.cf' . "\r\n" .
+	    	'Reply-To: admin@websolutionsteam.cf' . "\r\n" .
+	    	'X-Mailer: PHP/' . phpversion();
 
-		if(mail($to, $asunto, $mensaje, $headers))
-			echo "Mensaje enviado exitosamente.";
-		else
-			echo "Ocurrio un error al enviar el archivo";
+			if(mail($to, $asunto, $mensaje, $headers))
+				echo "Mensaje enviado exitosamente.";
+			else
+				echo "Ocurrio un error al enviar el archivo";
 
-	}//fin de function send
+		}//fin de function send
 
 
 	}//fin de clase

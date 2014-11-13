@@ -23,23 +23,20 @@ Class ClienteCtl{
 					$res=TRUE;	
 
 				    $nombre = isset($_POST["nombre"])?($_POST["nombre"]!=="")?$_POST["nombre"]:$res=FALSE:$res=FALSE;
-				    $apPaterno = isset($_POST["apPaterno"])?($_POST["apPaterno"]!=="")?$_POST["apPaterno"]:$res=FALSE:$res=FALSE;
-					$apMaterno= isset($_POST["apMaterno"])?($_POST["apMaterno"]!=="")?$_POST["apMaterno"]:$res=FALSE:$res=FALSE;
+				    $apellidos = isset($_POST["apellidos"])?($_POST["apellidos"]!=="")?$_POST["apellidos"]:$res=FALSE:$res=FALSE;
 					$domicilio = isset($_POST["domicilio"])?($_POST["domicilio"]!=="")?$_POST["domicilio"]:$res=FALSE:$res=FALSE;
 					$telefono = isset($_POST["telefono"])?($_POST["telefono"]!=="")?$_POST["telefono"]:$res=FALSE:$res=FALSE;
-				    $correo = isset($_POST["correo"])?($_POST["correo"]!=="")?$_POST["correo"]:$res=FALSE:$res=FALSE;
-					$idLogin = isset($_POST["idLogin "])?($_POST["idLogin "]!=="")?$_POST["idLogin "]:$res=FALSE:$res=FALSE;
+					$usuario = isset($_POST["usuario"])?($_POST["usuario"]!=="")?$_POST["usuario"]:$res=FALSE:$res=FALSE;
 
 					addslashes($nombre);
-					addslashes($apPaterno);
-					addslashes($apMaterno);
-					addslashes($domicilio );
+					addslashes($apellidos);
+					addslashes($domicilio);
 					addslashes($telefono);
-					addslashes($correo);
-					addslashes($idLogin);
+					addslashes($usuario);
+
 
 					if ($res) {
-						$resultado = $this -> model -> alta($nombre, $apPaterno, $apMaterno, $domicilio, $telefono, $correo, $idLogin);
+						$resultado = $this -> model -> alta($nombre, $apellidos, $domicilio, $telefono, $usuario);
 						if($resultado!==FALSE){
 						    require_once("view/AddCliente.php");
 						}else{
@@ -78,20 +75,20 @@ Class ClienteCtl{
 
 
 					if ($result!==FALSE) {		
-						if(!empty($_POST['$domicilio'])||!empty($_POST['telefono'])||!empty($_POST['correo'])||!empty($_POST['idLogin'])){
+						if(!empty($_POST['nombre'])||!empty($_POST['apellidos'])||!empty($_POST['domicilio'])||!empty($_POST['telefono'])){
 							//Se escribiran de nuevo los datos insertados
-							$domicilio = isset($_POST["domicilio"])?$_POST["domicilio"]:$result['domicilio'];
-							$telefono = isset($_POST["telefono"])?$_POST["telefono"]:$result['telefono'];
-							$correo = isset($_POST["correo"])?$_POST["correo"]:$result['correo'];
-							$idLogin = isset($_POST["idLogin"])?$_POST["idLogin"]:$result['idLogin'];
-
+							$nombre = isset($_POST["nombre"])?$_POST["nombre"]:$result["nombre"];
+							$apellidos = isset($_POST["apellidos"])?$_POST["apellidos"]:$result["apellidos"];
+							$domicilio = isset($_POST["domicilio"])?$_POST["domicilio"]:$result["domicilio"];
+							$telefono = isset($_POST["telefono"])?$_POST["telefono"]:$result["telefono"];
+							
+							addslashes($nombre);
+							addslashes($apellidos);
 							addslashes($domicilio);
 							addslashes($telefono);
-							addslashes($correo);
-							addslashes($idLogin);
 
 
-							$result=$this -> model -> modificar($idCliente,$domicilio, $telefono, $correo, $idLogin);
+							$result=$this -> model -> modificar($idCliente, $nombre, $apellidos, $domicilio, $telefono);
 							if($result!==FALSE){
 							    require_once("view/ModifyCliente.php");
 							}

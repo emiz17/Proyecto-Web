@@ -8,7 +8,7 @@
 	for($i=0; $i<count($result); $i++) {
 		echo "...." . $result[$i]['VIN'] . ".....";
 		echo "....." . $result[$i]['ubicacion'] . ".....";
-		echo "....." . $result[$i]['nombre_chofer'] . ".....";
+		echo "....." . $result[$i]['idEmpleado'] . ".....";
 		echo "...." . $result[$i]['motivo'] . ".....";
 		echo "...." . $result[$i]['fecha'] . ".....";
 		echo "...." . $result[$i]['hora'] . ".....";

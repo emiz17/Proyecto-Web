@@ -2,10 +2,6 @@
 	Class UbicacionCtl{
 		private $model;
 
-
-		
-
-
 		//y realizar la validacion de las palabras
 		//prueba.....
 		public function execute(){
@@ -32,7 +28,7 @@
 
 					    $vin = isset($_POST["vin"])?($_POST["vin"]!=="")?$_POST["vin"]:$res=FALSE:$res=FALSE;
 					    $ubicacion = isset($_POST["ubicacion"])?($_POST["ubicacion"]!=="")?$_POST["ubicacion"]:$res=FALSE:$res=FALSE;
-						$movidoPor = isset($_POST["movidoPor"])?($_POST["movidoPor"]!=="")?$_POST["movidoPor"]:$res=FALSE:$res=FALSE;
+						$idEmpleado = isset($_POST["idEmpleado"])?($_POST["idEmpleado"]!=="")?$_POST["idEmpleado"]:$res=FALSE:$res=FALSE;
 						$motivo = isset($_POST["motivo"])?($_POST["motivo"]!=="")?$_POST["motivo"]:$res=FALSE:$res=FALSE;
 						$fecha = isset($_POST["fecha"])?($_POST["fecha"]!=="")?$_POST["fecha"]:$res=FALSE:$res=FALSE;
 						$hora = isset($_POST["hora"])?($_POST["hora"]!=="")?$_POST["hora"]:$res=FALSE:$res=FALSE;
@@ -41,13 +37,11 @@
 
 							addslashes($vin);
 		  					addslashes($ubicacion);
-		  					addslashes($movidoPor);
+		  					addslashes($idEmpleado);
 		  					addslashes($motivo);
-		  					//addslashes($fecha);
-		  					//addslashes($hora);
 
 							if ($res) {
-								$resultado = $this -> model -> alta($vin, $ubicacion, $movidoPor, $motivo, $fecha, $hora);
+								$resultado = $this -> model -> alta($vin, $ubicacion, $idEmpleado, $motivo, $fecha, $hora);
 								if($resultado!==FALSE){
 								    require_once("view/AddUbicacion.php");
 								}else{
@@ -91,11 +85,11 @@
 
 
 						if ($result!==FALSE) {			
-							if(!empty($_POST['ubicacion'])||!empty($_POST['movidoPor'])||!empty($_POST['motivo'])||!empty($_POST['fecha'])||!empty($_POST['hora'])){
+							if(!empty($_POST['ubicacion'])||!empty($_POST['idEmpleado'])||!empty($_POST['motivo'])||!empty($_POST['fecha'])||!empty($_POST['hora'])){
 
 								//Se escribiran de nuevo los datos insertados
 								$ubicacion = isset($_POST["ubicacion"])?$_POST["ubicacion"]:$result["ubicacion"];
-								$movidoPor = isset($_POST["movidoPor"])?$_POST["movidoPor"]:$result["nombre_chofer"];
+								$idEmpleado = isset($_POST["idEmpleado"])?$_POST["idEmpleado"]:$result["idEmpleado"];
 								$motivo = isset($_POST["motivo"])?$_POST["motivo"]:$result["motivo"];
 								$fecha = isset($_POST["fecha"])?$_POST["fecha"]:$result["fecha"];
 								$hora = isset($_POST["hora"])?$_POST["hora"]:$result["hora"];
@@ -103,12 +97,10 @@
 								if($this->validar_fecha($fecha) && $this->validar_hora($hora)){
 
 				  					addslashes($ubicacion);
-				  					addslashes($movidoPor);
+				  					addslashes($idEmpleado);
 				  					addslashes($motivo);
-				  					//addslashes($fecha);
-				  					//addslashes($hora);
 
-									$result=$this -> model -> modificar($vin, $ubicacion, $movidoPor, $motivo, $fecha, $hora);
+									$result=$this -> model -> modificar($vin, $ubicacion, $idEmpleado, $motivo, $fecha, $hora);
 									if($result!==FALSE){
 									    require_once("view/ModifyUbicacion.php");
 									}
@@ -197,7 +189,7 @@
 		}
 		}//fin de function execute
 
-		//formato MM/DD/YYYY 
+		//formato YYYY/MM/DD
 		private function validar_fecha($fecha){
 			$pattern="/^\d{4}(\/|-)\d{1,2}(\/|-)\d{1,2}$/";
 			if (preg_match($pattern,$fecha))

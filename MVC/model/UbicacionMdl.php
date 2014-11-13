@@ -21,12 +21,12 @@
 		/************************************************
 		*					INSERT 						*
 		*************************************************/
-		function alta($vin, $ubicacion, $movidoPor, $motivo, $fecha, $hora){
+		function alta($vin, $ubicacion, $idEmpleado, $motivo, $fecha, $hora){
 
 			//insertarlos en la base de datos generando un query y posteriormente
 			//ejecutandolo
-			$query="INSERT INTO Ubicacion (ubicacion, nombre_chofer, motivo, fecha, hora, VIN )
-					VALUES ( \"$ubicacion\", \"$movidoPor\", \"$motivo\", \"$fecha\", \"$hora\", \"$vin\" )";
+			$query="INSERT INTO Ubicacion (ubicacion, idEmpleado, motivo, fecha, hora, VIN )
+					VALUES ( \"$ubicacion\", \"$idEmpleado\", \"$motivo\", \"$fecha\", \"$hora\", \"$vin\" )";
 
 			$r=$this->driver->query($query);
 
@@ -40,12 +40,12 @@
 		/************************************************
 		*					MODIFY 						*
 		*************************************************/
-		public function modificar($vin, $ubicacion, $movidoPor, $motivo, $fecha, $hora){
+		public function modificar($vin, $ubicacion, $idEmpleado, $motivo, $fecha, $hora){
 			$r=FALSE;
 
 			//insertarlos en la base de datos generando un query y posteriormente
 			//ejecutandolo
-			$query="UPDATE Ubicacion SET ubicacion=\"$ubicacion\", nombre_chofer=\"$movidoPor\", motivo=\"$motivo\", fecha=\"$fecha\", hora=\"$hora\"
+			$query="UPDATE Ubicacion SET ubicacion=\"$ubicacion\", idEmpleado=\"$idEmpleado\", motivo=\"$motivo\", fecha=\"$fecha\", hora=\"$hora\"
 			WHERE VIN=\"$vin\" ";
 
 			$r=$this->driver->query($query);

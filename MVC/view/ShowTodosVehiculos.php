@@ -1,7 +1,7 @@
 <?php
 	echo "Informacion de todos los vehiculos:<br><br>";
 	echo "-------------------------------------------------------------------<br>";
-	echo "......VIN........|....MARCA....|...MODELO...|...COLOR...|<br>";
+	echo "......VIN........|....MARCA....|...MODELO...|...COLOR...|...IDCLIENTE...<br>";
 	echo "-------------------------------------------------------------------<br>";
 
 	//print_r($result);
@@ -10,6 +10,7 @@
 		echo "....." . $result[$i]['marca'] . ".....";
 		echo "....." . $result[$i]['modelo'] . ".....";
 		echo "...." . $result[$i]['color'] . ".....";
+		echo "...." . $result[$i]['idCliente'] . ".....";
 		echo "<br>";
 	}
 

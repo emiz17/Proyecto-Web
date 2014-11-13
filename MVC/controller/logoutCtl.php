@@ -1,15 +1,15 @@
 <?php
-$logout=new LogoutCtl();
-$logout->logout();
+	$logout=new LogoutCtl();
+	$logout->logout();
 
-Class LogoutCtl{
+	Class LogoutCtl{
 
-function logout(){
-	session_start();
-	session_unset();
-	session_destroy();
-	setcookie(session_name(), '', time()-3600);
-	echo '<a href="../index.php">Clic para regresar al index</a>';
-}
-}
+		function logout(){
+			session_start();
+			session_unset();
+			session_destroy();
+			setcookie(session_name(), '', time()-3600);
+			echo '<a href="../index.php">Clic para regresar al index</a>';
+		}
+	}
 ?>
