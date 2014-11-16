@@ -7,15 +7,20 @@
 			$this -> model = new VehiculoMdl();
 			require_once("controller/sesionesCtl.php");
 			$comprueba= new SesionesCtl();
-
 			$act=isset($_GET['act'])?$_GET['act']:"";
 			if($comprueba->isLogged()){
 			switch ($act){
+				case "menu":
+					$vehiculoView=file_get_contents("view/vehiculoView.html");
+					echo $vehiculoView;
+				break;
 				case "alta":
 				if($comprueba->isAdmin()){
 					if(empty($_POST)){
-						if($this->model->connection_successful())
-							require_once("view/IngresaDatos.php");
+						if($this->model->connection_successful()){
+							$vehiculoView=file_get_contents("view/vehiculoAltaView.html");
+							echo $vehiculoView;
+						}
 					}//fin del if
 					else{
 					    //Obtener las variables para la alta
@@ -62,8 +67,10 @@
 				if($comprueba->isAdmin() || $comprueba->isEmpleado()){
 					if(empty($_POST)){
 						//Cargo la vista de agrega datos
-						if($this->model->connection_successful())
-							require_once("view/InsertVIN.php");
+						if($this->model->connection_successful()){
+							$vehiculoView=file_get_contents("view/vehiculoModificarView.html");
+							echo $vehiculoView;
+						}
 					}//fin del if
 					else{
 						//se buscara el vehiculo por VIN
@@ -74,8 +81,8 @@
 						$result=$this -> model -> mostrarDatos($vin);
 
 						if ($result!==FALSE) {
-							require_once("view/ShowVehiculo.php");
-							echo "<br><br>Inserte el/los campos a modificar:<br>";
+							$vehiculoView=file_get_contents("view/vehiculoModificarView.html");
+							echo $vehiculoView;
 						}else{
 							require_once("view/ErrorOperacion.php");
 							echo "<br>";
@@ -115,8 +122,11 @@
 				if($comprueba->isAdmin()|| $comprueba->isEmpleado() || $comprueba->isCliente()){
 					if(empty($_POST)){
 						//Cargo la vista de agrega datos
-						if($this->model->connection_successful())
-							require_once("view/InsertVIN.php");
+						if($this->model->connection_successful()){
+							$vehiculoView=file_get_contents("view/vehiculoMostrarView.html");
+							$vehiculoView=$this->processView(FALSE,"view/vehiculoMostrarView.html",FALSE);
+							echo $vehiculoView;
+						}
 					}//fin del if
 					else{
 						
@@ -134,17 +144,24 @@
 
 							//Si existe el VIN, muestralo, si no, manda error
 							if($result!==FALSE){
-								require_once("view/ShowVehiculo.php");
+
+								$codigoAgregado="<table id=\"table\"><thead><tr><th>VIN</th><th>Marca</th><th>Modelo</th><th>Color</th></tr></thead>
+									{Inicio_tabla}<tbody><tr><td>{VIN}</td><td>{marca}</td><td>{modelo}</td><td>{color}</td></tr>
+										</tbody>{Fin_tabla}</table>";
+
+								$vehiculoView=file_get_contents("view/vehiculoMostrarView.html");
+								$vehiculoView=$this->processView($result,"view/vehiculoMostrarView.html",$codigoAgregado);
+								echo $vehiculoView;
 							}else{
 								require_once("view/ErrorOperacion.php");
 								echo "<br>";
-								require_once("view/InsertVIN.php");
+								$vehiculoView=file_get_contents("view/vehiculoMostrarView.html");
+								echo $vehiculoView;
 							}
 
 						}else{//Si no esta seteado el VIN
-							require_once("view/ErrorOperacion.php");
-							echo "<br>";
-							require_once("view/InsertVIN.php");
+							$vehiculoView=file_get_contents("view/vehiculoMostrarView.html");
+								echo $vehiculoView;
 						}//fin del if ($vin!==FALSE)
 
 					}//fin de else
@@ -159,7 +176,9 @@
 					if($this->model->connection_successful()){
 						$result= $this -> model -> mostrarTodos();
 						if ($result!==FALSE) {			
-							require_once("view/ShowTodosVehiculos.php");
+							$vehiculoView=file_get_contents("view/vehiculoMostrarTodosView.html");
+							$vehiculoView=$this->processView($result,"view/vehiculoMostrarTodosView.html",FALSE);
+							echo $vehiculoView;
 						}else{
 							require_once("view/ErrorOperacion.php");
 						}
@@ -203,7 +222,87 @@
 				echo '<a href="controller/loginCtl.php?usuario=pedro&pass=ge">Clic para hacer login</a>';
 			}
 
-			}//Fin de function execute
+		}//Fin de function execute
+
+
+		public function processView($array,$vistaPath, $codigoAgregado){
+
+			//Procesar la vista
+			//Obtener la vista
+			$vista = file_get_contents($vistaPath);
+			//$header = file_get_contents("view/header.html");
+			//$footer = file_get_contents("view/footer.html");
+
+			//echo "<br>debug: Va a cargar la vista en base a lo devuelto por el modelo";
+			if($array!==FALSE){
+				
+				if($codigoAgregado!==FALSE){
+
+					$inicio_fila = strrpos($vista,'{Inicio_tabla}');
+					$final_fila = strrpos($vista,'{Fin_tabla}');
+					$fila = substr($vista,$inicio_fila,$final_fila-$inicio_fila);
+
+					$vista = str_replace($fila, $codigoAgregado, $vista);
+				}	
+
+				//Obtengo la fila de la tabla
+				$inicio_fila = strrpos($vista,'{Inicio_tabla}');
+				$final_fila = strrpos($vista,'{Fin_tabla}');
+				$fila = substr($vista,$inicio_fila,$final_fila-$inicio_fila);
+
+
+				if($codigoAgregado===FALSE){
+					//Genero las filas
+					$filas="";
+					foreach ($array as $row) {
+						$new_fila = $fila;
+
+						//$new_fila = str_replace('{codigo}', $row['id'], $new_fila);
+						//$new_fila = str_replace('{nombre}', $row['nombre'], $new_fila);
+						//Reemplazo con un diccionario
+						$diccionario = array(
+						"{VIN}" => $row["VIN"],
+						'{marca}' => $row["marca"],
+						'{modelo}' => $row["modelo"],
+						'{color}' => $row["color"]);
+						$new_fila = strtr($new_fila,$diccionario);
+						$filas .= $new_fila;
+					}
+				}else{
+					$diccionario = array(
+						"{VIN}" => $array["VIN"],
+						'{marca}' => $array["marca"],
+						'{modelo}' => $array["modelo"],
+						'{color}' => $array["color"]);
+						$filas = strtr($fila,$diccionario);
+				}
+
+				//Reemplazo en mi vista una fila por todas las filas
+				$vista = str_replace($fila, $filas, $vista);
+				
+				
+				//Reemplazo con un diccionario
+				/*$diccionario = array(
+				'{pagina}' => 'Vehiculo',
+				'{extras}' => '',
+				'{usuario}' => 'pedro');
+				$vista = strtr($vista,$diccionario);
+				//$header = strtr($header,$diccionario);
+				//$vista = $header . $vista . $footer;*/
+				
+				//Mostrar la vista
+				
+			}
+
+			$tabla=array(
+					'{Inicio_tabla}'=>"",
+					'{Fin_tabla}'=>""
+					);
+			$vista=strtr($vista, $tabla);
+
+			echo $vista;
+			
+		}//fin de la funcion procesarVista
 
 	}//Fin de clase
 

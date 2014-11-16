@@ -5,12 +5,12 @@
 		function comprobarSesion(){
 			if(isset($_SESSION['usuario'])){
 				$usuario=$_SESSION['usuario'] ;
-				echo "Ya tienes sesion $usuario <br>";
-				echo '<br><a href="controller/logoutCtl.php">Cerrar sesion </a>';
+				$mensaje="Ya tienes sesion $usuario <br><br><a href=\"controller/logoutCtl.php\">Cerrar sesion </a>";
+				//echo $mensaje;
 			}
 			else{
-				echo 'Necesitas ingresar al sistema <br>';
-				echo '<a href="controller/loginCtl.php?usuario=pedro&pass=ge">Clic para hacer login</a>';
+				$mensaje="Necesitas ingresar al sistema <br><a href=\"controller/loginCtl.php?usuario=pedro&pass=ge\">Clic para hacer login</a>";
+				//echo $mensaje;
 			}
 		}
 

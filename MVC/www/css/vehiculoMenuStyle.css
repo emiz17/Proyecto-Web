@@ -1,0 +1,242 @@
+#main{
+    width: 100%;
+    height: 100%;   
+}
+
+html, body { 
+    min-height: 100%; 
+    width: 100%; 
+    height: 100%;
+}
+
+body {
+    margin: 0px 0;
+    padding: 0;
+    background: #FFFFFF;
+    /*font: normal small "Trebuchet MS", Arial, Helvetica, sans-serif;*/
+    font: normal 11px Arial, helvetica, sans-serif; 
+    color:#31333B;
+
+}
+
+#header {
+    width: 850px;
+    height: 200px;
+    margin: 0px auto;
+    padding: 3px 0px;
+    margin-left: auto;
+    margin-right: auto;
+    clear: both;
+}
+
+
+div.image1{
+    clear: both;
+    display: inline;
+    margin-left: 245px;
+}
+
+#image1 {
+    height: 350px;
+    width: 950px;
+    display: inline;
+}
+
+#menu {
+    width: 950px;
+    height: 45px;
+    margin: 0 auto;
+    background: #E2373F;
+}
+
+
+#menu ul {
+    margin: 0;
+    padding: 0px 0px 0px 0px;
+    list-style: none;
+}
+
+#menu li {
+    display: inline;
+}
+
+
+#menu a {
+    display: block;
+    float: left;
+    margin-left: 20px;
+    height : 25px;
+    padding: 15px 10px 0px 10px;
+    border-bottom: 4px solid #330010;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: bold;
+    color: #FFFFFF;
+    border-bottom-color: #ffcd04;
+}
+
+
+#menu a:hover {
+    border-bottom-color: #FFFFFF;
+    background: #0061AA;
+}
+
+#menu .active a {
+    border-bottom-color: #FFFFFF;
+    background: #0061AA;
+}
+
+#content {
+    width: 950px;
+    height: 350px;
+    margin: 0 auto;
+    border-top: 2px solid #FFFFFF;
+    border-bottom: 0px solid #FFFFFF;
+    
+    background:#0061AA;
+    background-image: url("../img/road.jpg");
+    background-size: 950px 350px;
+    background-repeat: no-repeat;
+
+}
+
+#content_text, h1{
+    height: 100px;
+    text-align : center;
+    font-size: 20px;
+    font-weight: bold;
+    font-style: italic;
+    vertical-align: middle;
+}
+
+#content_no_img{
+    width: 950px;
+    height: 350px;
+    margin: 0 auto;
+    border-top: 2px solid #FFFFFF;
+    border-bottom: 0px solid #FFFFFF;
+    background:#0061AA;
+    background-size: 950px 350px;
+}
+
+
+#right {
+    width: 540px;
+    padding: 0px;
+    margin-left:20px;
+    float:right;
+    /*clear: both;*/
+    /*background: #ff00ff;*/
+    }
+
+
+#left {
+    width: 250px;  
+    height: 100px; 
+    margin: 0 auto;
+    float:left;
+    padding:20px;
+    padding-top:0px;
+    /*clear: both;*/
+    border: 5px solid black;
+    /*background: #ff0000;*/
+}
+
+#footer {
+    width: 950px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 3px 0px;
+    /*height: 100px;*/
+    border-top: 2px solid #FFFFFF;
+    background: #E2373F;
+    clear: both;
+}
+
+#footer p {
+    margin: 0px;
+    padding-top: 15px;
+    text-align: center;
+    font-size: 11px;
+    color: #FFFFFF;
+}
+
+#footer a {
+    color: #ffffff;
+}
+
+#footer a:hover {
+    color: #ffffff;
+}
+
+
+#header, #left, #right{   
+    display: inline;
+}
+ 
+
+a {
+color:#3f71b6;
+}
+
+a:hover {
+color:#3f71b6;
+text-decoration :none;
+}
+
+hr {
+width:100%;
+height: 1px;
+color:#8fa819;
+background-color:#8fa819;
+
+}
+
+#form h1{
+    font: normal 30px helvetica, sans-serif; 
+    color:#31333B;
+}
+ 
+#form_alta_vehiculo{
+    font: normal 18px Georgia, sans-serif, helvetica;
+    font-weight: bold;
+    font-style: oblique; 
+    color:#ffcd04;
+    text-align: center;
+    
+}
+
+#table {
+    border-collapse: collapse;
+    border: 3px solid white;
+    text-align: center;
+    vertical-align: middle;
+    margin: 20px auto;
+}
+
+#table th{
+    border: 2px solid white;
+    font-size: 20px;
+    color: #31333B;
+    background-color: #ffcd04;
+    text-transform: uppercase;
+    font-style: oblique;
+}
+
+#table td{
+    border: 1px solid white;
+    font-size: 16px;
+    color: #000000;
+    width: 220px;
+    font: normal 16px Times, sans-serif,  Georgia;
+    background-color: #E2373F;
+    padding: 5px;
+    font-weight: bold;
+}
+
+#table tr{
+
+}
+
+
