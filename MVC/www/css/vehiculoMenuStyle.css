@@ -177,7 +177,7 @@ div.image1{
  
 
 a {
-color:#3f71b6;
+    color:#3f71b6;
 }
 
 a:hover {
@@ -198,13 +198,32 @@ background-color:#8fa819;
     color:#31333B;
 }
  
+
+ #form a{
+    color: #000000;
+    font: normal 18px helvetica, sans-serif; 
+    text-decoration: none;
+    margin: auto 40%;
+    text-align: center;
+ }
+
+ #form a:hover{
+    color: #000000;
+    background-color:#FFFFFF; 
+    
+ }
+
+
 #form_alta_vehiculo{
     font: normal 18px Georgia, sans-serif, helvetica;
     font-weight: bold;
     font-style: oblique; 
     color:#ffcd04;
     text-align: center;
-    
+
+    position: relative;
+    top: -50px;
+
 }
 
 #table {
@@ -238,5 +257,7 @@ background-color:#8fa819;
 #table tr{
 
 }
+
+
 
 
