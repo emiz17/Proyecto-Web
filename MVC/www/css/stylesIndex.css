@@ -1,0 +1,101 @@
+#navar1{
+	/*background-color: #FF181C;
+	*/
+}
+#titulo{
+	color:#666; 
+}
+
+#contImage{
+	background: url("../img/auto1.jpg") no-repeat center center fixed;
+background-size: cover;
+}
+
+#btnSignIn{
+	border:none;
+	background-color: #FF181C;
+}
+
+.pie{
+	 text-align:center;
+  background-color:#0B45B0; 
+}
+
+.datos {
+text-align:center;
+margin:0;
+padding: 5px; 
+font-family:Arial, Helvetica, sans-serif; 
+font-size: 13px; 
+color:#FFF
+
+}
+
+#miMenu1{
+text-align:center;
+
+}
+
+#contenido{
+text-align:center;
+color:#666; 
+
+}
+
+/* primero que nada, el contenedor, el rectángulo donde se mostrará el menú
+#miMenu {
+  /* si es necesario, aquí podemos definir anchos, márgenes o fondos /*
+}
+
+/* luego, las definiciones de la lista */
+ul#listaMenu1 {
+text-align: center;
+	margin: 0 auto;
+  /* reseteamos las propiedades por defecto /*
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  /* y podemos agregar propiedades para las fuentes de los textos */
+}
+
+/* cada item de la lista */
+ul#listaMenu1 li {
+	text-align: center;
+	margin: 0 auto;
+  /* las mostraremos una al lado de la otra */
+  display: inline;
+}
+
+/* y la clave es definir los enlaces como bloques que floten; de ese modo, podemos agregarles porpiedades gráficas con facilidad */
+ul#listaMenu1 li a {
+ /* display: block; /* esto, transforma el enlace en un rectángulo al que podemos dimensionar 
+  float: left; /* son bloques pero flotan, los veremos uno al lado del otro */
+  text-align: center; /* centramos el texto */
+  text-decoration: none; /* para que no se subrayen los enlaces */
+  margin-right: 2px; /* en este ejemplo, cada botón se separa un poco del adyacente */
+  /*
+    el tamaño podemos definirlo de varias formas, por ejemplo
+        height: 20px;
+        line-height: 20px;
+        width: 100px;  
+    otra forma es usar padding  y de ese modo, su tamaño es dinámico, varia según el texto */
+     /*   padding: 5px 20px; 
+  */
+    padding: 5px 20px;
+  /* por último, los colores y los bordes */
+ /* background: #5F3222;
+  border-top: 2px solid #815444;
+  border-right: 2px solid #3D1000;
+  border-bottom: 2px solid #3D1000;
+  border-left: 2px solid #815444;
+  color: #EEE;*/
+}
+/* y el efecto hover donde simplemente, cambiamos esos colores */
+ul#listaMenu1 li a:hover {
+ /* background: #A37666;
+  color: #000;
+  border-top: 2px solid #815444;
+  border-right: 2px solid #C59888;
+  border-bottom: 2px solid #C59888;
+  border-left: 2px solid #815444;*/
+}
