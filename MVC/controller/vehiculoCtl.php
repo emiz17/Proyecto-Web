@@ -51,7 +51,10 @@
 						if ($res) {
 							$resultado = $this -> model -> alta($vin,$marca,$modelo,$color, $idCliente);
 							if($resultado!==FALSE){
-							    require_once("view/AddVehiculo.php");
+							    $codigoAgregado="<br /><h1>Vehiculo Agregado Exitosamente</h1><br /><br /><a href=\"index.php?ctl=vehiculo&act=alta\">Agregar Otro</a>";
+								    $vehiculoView=file_get_contents("view/vehiculoAltaView.html");
+									$vehiculoView=$this->processView($result,"view/vehiculoAltaView.html",$codigoAgregado);
+									echo $vehiculoView;
 							}else{
 								require_once("view/ErrorOperacion.php");
 							}//fin del if($resultado!==FALSE)
@@ -69,26 +72,44 @@
 						//Cargo la vista de agrega datos
 						if($this->model->connection_successful()){
 							$vehiculoView=file_get_contents("view/vehiculoModificarView.html");
+							$vehiculoView=$this->processView(FALSE,"view/vehiculoModificarView.html",FALSE);
 							echo $vehiculoView;
 						}
 					}//fin del if
 					else{
 						//se buscara el vehiculo por VIN
+
 						$vin = $_POST["vin"];
 						addslashes($vin);
 						
 						//Se muestran los datos actuales
 						$result=$this -> model -> mostrarDatos($vin);
 
-						if ($result!==FALSE) {
-							$vehiculoView=file_get_contents("view/vehiculoModificarView.html");
-							echo $vehiculoView;
-						}else{
-							require_once("view/ErrorOperacion.php");
-							echo "<br>";
-							require_once("view/InsertVIN.php");
-						}
+						if ($result!==FALSE&&(empty($_POST['marca'])||empty($_POST['modelo'])||empty($_POST['color']))) {
+							$codigoAgregado="<h1>MODIFIQUE ALGUNO DE LOS SIGUIENTES CAMPOS</h1>	
+								<form id=\"form_alta_vehiculo\" action=\"index.php?ctl=vehiculo&act=modificar\" method=\"POST\">
+								<label for=\"vin\">VIN*: {VIN}</label><input type=\"hidden\" id=\"vin\" name=\"vin\" size=\"22\" maxlength=\"17\" value=\"{VIN}\" />
+								<br /><br />
+								<label for=\"marca\">Marca*:</label><input type=\"text\" id=\"marca\" name=\"marca\" size=\"22\" maxlength=\"25\" value=\"{marca}\" required autofocus />
+								<br /><br />
+								<label for=\"modelo\">Modelo*:</label><input type=\"text\" id=\"modelo\" name=\"modelo\" size=\"22\" maxlength=\"4\" value=\"{modelo}\" required />
+								<br /><br />
+								<label for=\"color\">Color*:</label><input type=\"color\" id=\"color\" name=\"color\" value=\"{color}\" required />
+								<br /><br />
+								<button type=\"submit\">Modificar</button>
+								</form>";
 
+							$vehiculoView=file_get_contents("view/vehiculoModificarView.html");
+							$vehiculoView=$this->processView($result,"view/vehiculoModificarView.html",$codigoAgregado);
+							echo $vehiculoView;
+
+						}else{
+							/*require_once("view/ErrorOperacion.php");
+							echo "<br>";
+							require_once("view/InsertVIN.php");*/
+							
+						}
+						
 
 						if ($result!==FALSE) {			
 							if(!empty($_POST['marca'])||!empty($_POST['modelo'])||!empty($_POST['color'])){
@@ -103,7 +124,10 @@
 
 								$result=$this -> model -> modificar($vin, $marca, $modelo, $color);
 								if($result!==FALSE){
-								    require_once("view/ModifyVehiculo.php");
+									$codigoAgregado="<br /><h1>Modificacion Exitosa</h1><br /><br /><a href=\"index.php?ctl=vehiculo&act=modificar\">Modificar Otro</a>";
+								    $vehiculoView=file_get_contents("view/vehiculoModificarView.html");
+									$vehiculoView=$this->processView($result,"view/vehiculoModificarView.html",$codigoAgregado);
+									echo $vehiculoView;
 								}
 								else{
 									require_once("view/ErrorOperacion.php");
@@ -187,7 +211,8 @@
 				else 
 					echo "<br>No tienes los permisos para realizar esta operacion";
 				break;
-				case "eliminar":
+
+				/*case "eliminar":
 				if($comprueba->isAdmin()){
 						if(empty($_POST)){
 							//Cargo la vista de agrega datos
@@ -212,7 +237,7 @@
 					}
 					else
 						echo "<br>No tienes los permisos para realizar esta operacion";
-					break;
+					break;*/
 					default:
 						require_once("view/Default.php");
 				}//Fin de switch
