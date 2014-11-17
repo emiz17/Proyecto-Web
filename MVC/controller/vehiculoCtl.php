@@ -87,7 +87,7 @@
 
 						if ($result!==FALSE&&(empty($_POST['marca'])||empty($_POST['modelo'])||empty($_POST['color']))) {
 							$codigoAgregado="<h1>MODIFIQUE ALGUNO DE LOS SIGUIENTES CAMPOS</h1>	
-								<form id=\"form_alta_vehiculo\" action=\"index.php?ctl=vehiculo&act=modificar\" method=\"POST\">
+								<form id=\"form_alta\" action=\"index.php?ctl=vehiculo&act=modificar\" method=\"POST\">
 								<label for=\"vin\">VIN*: {VIN}</label><input type=\"hidden\" id=\"vin\" name=\"vin\" size=\"22\" maxlength=\"17\" value=\"{VIN}\" />
 								<br /><br />
 								<label for=\"marca\">Marca*:</label><input type=\"text\" id=\"marca\" name=\"marca\" size=\"22\" maxlength=\"25\" value=\"{marca}\" required autofocus />
