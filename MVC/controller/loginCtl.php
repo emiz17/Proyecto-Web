@@ -1,6 +1,8 @@
 <?php
-	$usuario= $_GET['usuario'];
-	$pass= $_GET['pass'];
+	$usuario= $_POST['usuario'];
+	$pass= $_POST['pass'];
+
+	echo "usuario $usuario  pass $pass  ";
 	$login=new LoginCtl();
 	$login->login($usuario, $pass);
 
@@ -32,7 +34,29 @@
 				echo "Usuario o Password incorrectos<br>";
 				echo '<a href="../index.php">Clic para regresar al index</a>';
 			}
+			$this->vista();
 			//$this->model->cerrarDB();
+		}
+
+		function vista(){
+			if( isset($_SESSION['type']) && $_SESSION['type'] == 'admin' ){
+				/*$content = file_get_contents('../view/BienvenidaInspeccion.html');
+				echo $content;*/
+				header('Location: ../view/BienvenidaInspeccion.html');
+				}else
+					if( isset($_SESSION['type']) && $_SESSION['type'] == 'cliente' ){
+					/*$content = file_get_contents('../view/usuarioView.html');
+					echo $content;*/
+					header('Location: ../view/usuarioView.html');
+					}else
+					if( isset($_SESSION['type']) && $_SESSION['type'] == 'empleado' ){
+						/*$content = file_get_contents('../view/usuarioMostrarView.html');
+						echo $content;*/
+						header('Location: ../view/usuarioMostrarView.html');
+						}
+					else{
+					header('Location: ../index.html');
+					}
 		}
 
 
@@ -46,10 +70,10 @@
 
 			$r=$this->driver->query($query);
 			//var_dump($r);
-			
+			echo "aa";
 			$row=$r->fetch_assoc();
 			//var_dump($row); 
-			//echo "<br>cont:  " .$row['cont'];
+			echo "<br>cont:  " .$row['cont'];
 			if($row['cont']==0)
 				$row=false;
 			else 
