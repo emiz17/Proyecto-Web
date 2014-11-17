@@ -10,6 +10,7 @@ html, body {
 }
 
 body {
+    text-align: center;
     margin: 0px 0;
     padding: 0;
     background: #FFFFFF;
@@ -24,8 +25,6 @@ body {
     height: 200px;
     margin: 0px auto;
     padding: 3px 0px;
-    margin-left: auto;
-    margin-right: auto;
     clear: both;
 }
 
@@ -33,10 +32,13 @@ body {
 div.image1{
     clear: both;
     display: inline;
-    margin-left: 245px;
+    margin-left: auto;
+    margin-right: auto;
+    /*margin-left: 245px;*/
 }
 
 #image1 {
+     margin: 0 auto;
     height: 350px;
     width: 950px;
     display: inline;
