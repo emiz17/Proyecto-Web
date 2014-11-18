@@ -1,43 +1,80 @@
 <!DOCTYPE html>
 <html lang="es">
-	<!--<div id="main">-->
 	<head>
-		<link rel="stylesheet" type="text/css" href="./www/css/vehiculoMenuStyle.css"/>
+		<link rel="stylesheet" type="text/css" href="../www/css/vistaStyle.css"/>
+		<link href="../www/css/bootstrap.min.css" rel="stylesheet">		
 		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
 		<title>WEB Solutions - Vehiculo</title>
 	</head>
-	<body>	
-		<header id="header">
-			<div class="image1">
-				<img id="image1" src="./www/img/auto1.jpg" alt="WEB Solutions">
-			</div>
-			<div id="menu">
-				<ul>
-					<li><a href="index.php"title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">Home</a></li>
-					<li class="active"><a href="index.php?ctl=vehiculo&act=menu"  title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">VEHICULO</a></li>
-					<li><a href="index.php?ctl=vehiculo&act=alta" title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">ALTA DE VEHICULO</a></li>
-					<li><a href="index.php?ctl=vehiculo&act=modificar"  title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">MODIFICAR UN VEHICULO</a></li>
-					<li><a href="index.php?ctl=vehiculo&act=mostrar"  title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">BUSCAR VEHICULO</a></li>
-					<li><a href="index.php?ctl=vehiculo&act=mostrarTodos"  title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">MOSTRAR TODOS LOS VEHICULOS</a></li>
-				</ul>
-			</div>
-
-		</ul>
-		</header>
-
-		<section id="content">
-			<p id="content_text">
-				<h1>Bienvenido a la sección vehiculo, seleccione la tarea que desee hacer a continuación en el menú de la parte superior.</h1>
-			</p>
-		<!--<aside id="letf">Izquierda
-		</aside>
-		<aside id="right">Derecha
-		</aside>-->
-		</section>
-
-		<footer id="footer">
-			<p>Copyright © 2014 WEB Solutions Team</p>
-		</footer>
 	<body>
-	<!--</div>-->
+
+    <div  id="navar1" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Inspección Vehicular</a>
+           <a id="user" class="navbar-brand" href="#"></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <form class="navbar-form navbar-right" action="http://localhost/MVC/controller/logoutCtl.php" role="form">
+           <button type="submit"  id="btnSignIn" class="btn btn-success">Logout</button> 
+          </form>
+        </div>
+      </div>
+    </div>
+
+	<header id="header">
+		<div class="image1">
+			<img id="image1" src="../www/img/auto1.jpg" alt="WEB Solutions">
+		</div>
+		<div style="text-align:center;" id="menu">
+			<ul class="ulBarra">
+				<li class="active"><a href="index.php"title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)" >Home</a></li>
+			</ul>
+		</div>
+	</header>
+
+	<section id="content_no_img">
+		<div id="form">
+			<div id="form_alta">
+				<br /><br /><br /><br /><br /><br />
+				<div  id="contBtn" style="width: 100px; height: 100px;" >
+					<button class="btn3" method="post" type="submit" onClick="location.href = '../view/usuarioMostrarView.html'">Vehiculo</button> 
+					<button class="btn3" type="submit" onClick="location.href = '../view/usuarioMostrarView.html'">Inventario</button>
+					<button class="btn3" type="submit" onClick="location.href = '../view/usuarioMostrarView.html'">Ubicacion</button>
+					<button class="btn3" type="submit" onClick="location.href = '../view/usuarioMostrarView.html'">Golpes</button>
+				</div> 
+				<div id="contBtn1" style="width: 300px; height: 100px;"> 
+					
+					<h1>Bienvenido a Sistema de Inspección Vehicular</h1>
+					<br>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<footer id="footer">
+    	<div  id="miMenu1">
+      		<ul id="listaMenu1">
+        		<li><a class= href="https://twitter.com/" ><img src="../www/img/twitter.png" alt="twitter"></a></li>
+        		<li><a href="https://www.facebook.com/"><img src="../www/img/face.png" alt="facebook"></a></a></li>
+        		<li><a href="http://www.youtube.com/"><img src="../www/img/youtube.png" alt="youtube"></a></li>
+        		<li><a href="http://mx.linkedin.com/"><img src="../www/img/in.png" alt="linkedin"></a></li>
+      		</ul>
+    	</div>
+			<p>Copyright © 2014 WEB Solutions Team</p>
+			<p><strong> Informes:</strong></p>  
+            <p><strong>Tels. 31234567 y 32345678  </strong></p><strong>
+            <p><strong>Correo electrónico: </strong>
+            <p>admin@websolutionsteam.cf</p></p>
+	</footer> 
+	<body>
+<script type="text/javascript" src="../www/js/user.js"></script>
 </html>

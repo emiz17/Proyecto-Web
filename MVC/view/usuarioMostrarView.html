@@ -2,18 +2,49 @@
 <html lang="es">
 	<!--<div id="main">-->
 	<head>
-		<link rel="stylesheet" type="text/css" href="./www/css/vehiculoMenuStyle.css"/>
+		<link rel="stylesheet" type="text/css" href="../www/css/vistaStyle.css"/>
+		<link href="../www/css/bootstrap.min.css" rel="stylesheet">		
 		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
 		<title>WEB Solutions - Vehiculo</title>
 	</head>
-	<body>	
+	<body>
+
+    <div  id="navar1" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Inspección Vehicular</a>
+           <a id="user" class="navbar-brand" href="#"></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <form class="navbar-form navbar-right" action="http://localhost/MVC/controller/logoutCtl.php" role="form">
+      <!--    <h2>Usuario: <? echo $_SESSION["usuario"]; ?> </h2><br>  -->
+       <!--   <?php echo "<p>Bienvenido   $_SESSION['usuario']  !!!!, este es tu perfil     </p>"; ?>-->
+
+               
+
+
+
+           <button type="submit"  id="btnSignIn" class="btn btn-success">Logout</button> 
+          </form>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>
+
 		<header id="header">
 			<div class="image1">
-				<img id="image1" src="./www/img/auto1.jpg" alt="WEB Solutions">
+				<img id="image1" src="../www/img/auto1.jpg" alt="WEB Solutions">
 			</div>
 			<div id="menu">
-				<ul>
-					<li><a href="index.php"title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">Home</a></li>
+				<ul class="ulBarra">
+					<li><a href="http://localhost/MVC/view/adminView.html" title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">Home</a></li>
 					<li><a href="index.php?ctl=vehiculo&act=menu"  title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">VEHICULO</a></li>
 					<li><a href="index.php?ctl=vehiculo&act=alta" title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">ALTA DE VEHICULO</a></li>
 					<li><a href="index.php?ctl=vehiculo&act=modificar"  title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">MODIFICAR UN VEHICULO</a></li>
@@ -34,7 +65,7 @@
 			<div id="form">
 				{Inicio_tabla}
 				<h1>INGRESE EL VIN DEL AUTOMOVIL A BUSCAR</h1>
-				<form id="form_alta_vehiculo" action="index.php?ctl=vehiculo&act=mostrar" method="POST">
+				<form id="form_alta" action="index.php?ctl=vehiculo&act=mostrar" method="POST">
 					
 					<label for="nombre">VIN*:</label>
 					<input type="text" id="vin" name="vin" size="17" maxlength="17" placeholder="Ingresa el VIN" required autofocus />
@@ -59,18 +90,34 @@
 
 					<br /><br />-->
 
-					<button type="submit">Buscar</button>
+					<button class="btn2" type="submit">Buscar</button>
+				<br><br>
 
 				</form>
 				{Fin_tabla}
+
+
 
 			</div>
 
 		</section>
 
 		<footer id="footer">
+    		<div  id="miMenu1">
+      			<ul id="listaMenu1">
+        			<li><a class= href="https://twitter.com/" ><img src="../www/img/twitter.png" alt="twitter"></a></li>
+        			<li><a href="https://www.facebook.com/"><img src="../www/img/face.png" alt="facebook"></a></a></li>
+        			<li><a href="http://www.youtube.com/"><img src="../www/img/youtube.png" alt="youtube"></a></li>
+        			<li><a href="http://mx.linkedin.com/"><img src="../www/img/in.png" alt="linkedin"></a></li>
+      			</ul>
+    		</div>
 			<p>Copyright © 2014 WEB Solutions Team</p>
-		</footer>
+			<p><strong> Informes:</strong></p>  
+            <p><strong>Tels. 31234567 y 32345678  </strong></p><strong>
+            <p><strong>Correo electrónico: </strong>
+            <p>admin@websolutionsteam.cf</p></p>
+		</footer> 
 	<body>
-	<!--</div>-->
+
+<script type="text/javascript" src="../www/js/user.js"></script>
 </html>
