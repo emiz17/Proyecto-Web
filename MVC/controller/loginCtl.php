@@ -1,8 +1,6 @@
 <?php
 	$usuario= $_POST['usuario'];
 	$pass= $_POST['pass'];
-
-	echo "usuario $usuario  pass $pass  ";
 	$login=new LoginCtl();
 	$login->login($usuario, $pass);
 
@@ -19,43 +17,26 @@
 
 
 		function login($usuario, $pass){
-			//require_once("../model/UsuarioMdl.php");
-			//$this->model = new UsuarioMdl();
 			$result=$this->existeUsuario($usuario,$pass);
 			if($result===true){
-				session_start();
 				$_SESSION['usuario'] = $usuario;
 				$_SESSION['clave'] = $pass;
 				$_SESSION['type'] =$this->obtenerTipo($usuario);
-
-				echo '<a href="../index.php">Clic para regresar al index</a>';
-			}
-			else{
-				echo "Usuario o Password incorrectos<br>";
-				echo '<a href="../index.php">Clic para regresar al index</a>';
 			}
 			$this->vista();
-			//$this->model->cerrarDB();
 		}
 
 		function vista(){
 			if( isset($_SESSION['type']) && $_SESSION['type'] == 'admin' ){
-				/*$content = file_get_contents('../view/BienvenidaInspeccion.html');
-				echo $content;*/
-				header('Location: ../view/BienvenidaInspeccion.html');
+				header('Location: ../view/adminView.html');						
+			}else
+				if( isset($_SESSION['type']) && $_SESSION['type'] == 'cliente' ){
+					header('Location: ../view/clienteView.html');
 				}else
-					if( isset($_SESSION['type']) && $_SESSION['type'] == 'cliente' ){
-					/*$content = file_get_contents('../view/usuarioView.html');
-					echo $content;*/
-					header('Location: ../view/usuarioView.html');
-					}else
 					if( isset($_SESSION['type']) && $_SESSION['type'] == 'empleado' ){
-						/*$content = file_get_contents('../view/usuarioMostrarView.html');
-						echo $content;*/
-						header('Location: ../view/usuarioMostrarView.html');
-						}
-					else{
-					header('Location: ../index.html');
+						header('Location: ../view/empleadoView.html');
+					}else{
+						header('Location: ../index.html');
 					}
 		}
 
@@ -70,10 +51,9 @@
 
 			$r=$this->driver->query($query);
 			//var_dump($r);
-			echo "aa";
 			$row=$r->fetch_assoc();
 			//var_dump($row); 
-			echo "<br>cont:  " .$row['cont'];
+		//	echo "<br>cont:  " .$row['cont'];
 			if($row['cont']==0)
 				$row=false;
 			else 
