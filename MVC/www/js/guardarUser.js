@@ -1,3 +1,4 @@
+sessionStorage.clear();
 
 function guardarDatos(){
  	sessionStorage.nombre = document.getElementById("nombre").value;

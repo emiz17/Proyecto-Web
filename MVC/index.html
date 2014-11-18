@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="www/img/favicon.ico">
+    <link rel="icon" href="/www/img/favicon.ico">
 
     <title>..:: INSPECCIÓN VEHICULAR ::..</title>
 
@@ -22,6 +22,7 @@
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="www/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="www/js/guardarUser.js"></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -46,13 +47,13 @@
         <div class="navbar-collapse collapse">
           <form class="navbar-form navbar-right" method="post" action="http://localhost/MVC/controller/loginCtl.php" role="form">
             <div class="form-group">
-              <input type="user" name="usuario" value="" class="form-control" placeholder="User" required autofocus>
+              <input id="nombre" type="user" name="usuario" value="" class="form-control" placeholder="User" required autofocus>
        
             </div>
             <div class="form-group">
-               <input type="password" name="pass" value="" class="form-control" placeholder="Password" required>
+               <input id="password" type="password" name="pass" value="" class="form-control" placeholder="Password" required>
             </div>
-           <button type="submit"  id="btnSignIn" class="btn btn-success">Sign in</button> 
+           <button onclick="guardarDatos()" type="submit"  action="http://localhost/MVC/index.php"  id="btnSignIn" class="btn btn-success">Sign in</button> 
           </form>
         </div><!--/.navbar-collapse -->
       </div>
@@ -113,6 +114,6 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>  
   </body>
 </html>

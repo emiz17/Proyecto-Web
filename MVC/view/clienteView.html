@@ -76,5 +76,13 @@
             <p>admin@websolutionsteam.cf</p></p>
 	</footer> 
 	<body>
+	<!-- Se pasara a un archivo de js externo, aun esta en proceso de prueba-->
+	<script type="text/javascript">
+	 if ((sessionStorage.nombre != undefined) && (sessionStorage.password != undefined)) {
+		sessionStorage.tipo = "cliente";
+	}
+ 	 	//alert("tipo: " + sessionStorage.tipo);
+
+	</script>
 <script type="text/javascript" src="../www/js/user.js"></script>
 </html>
