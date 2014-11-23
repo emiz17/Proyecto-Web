@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 	<head>
-		<link rel="stylesheet" type="text/css" href="../www/css/vistaStyle.css"/>
-		<link href="../www/css/bootstrap.min.css" rel="stylesheet">		
+		<link rel="stylesheet" type="text/css" href="www/css/vistaStyle.css"/>
+		<link href="www/css/bootstrap.min.css" rel="stylesheet">		
 		<meta charset="UTF-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -23,7 +23,7 @@
            <a id="user" class="navbar-brand" href="#"></a>
         </div>
         <div class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right" action="http://localhost/MVC/controller/logoutCtl.php" role="form">
+          <form class="navbar-form navbar-right" action="controller/logoutCtl.php" role="form">
            <button type="submit"  id="btnSignIn" class="btn btn-success">Logout</button> 
           </form>
         </div>
@@ -32,7 +32,7 @@
 
 	<header id="header">
 		<div class="image1">
-			<img id="image1" src="../www/img/auto1.jpg" alt="WEB Solutions">
+			<img id="image1" src="www/img/auto1.jpg" alt="WEB Solutions">
 		</div>
 		<div style="text-align:center;" id="menu">
 			<ul class="ulBarra">
@@ -46,13 +46,13 @@
 			<div id="form_alta">
 				<br /><br /><br /><br />
 				<div  id="contBtn" style="width: 100px; height: 100px;" >
-					<button class="btn3" method="post" type="submit" onClick="location.href = '../view/usuarioMostrarView.html'">Empleados</button> 
-					<button class="btn3" type="submit" onClick="location.href = '../view/usuarioMostrarView.html'">Usuarios</button>
-					<button class="btn3" type="submit" onClick="location.href = '../view/usuarioMostrarView.html'">Vehiculos</button>
-					<button class="btn3" type="submit" onClick="location.href = '../view/usuarioMostrarView.html'">Inventario</button>
-					<button class="btn3" type="submit" onClick="location.href = '../view/usuarioMostrarView.html'">Clientes</button>
-					<button class="btn3" type="submit" onClick="location.href = '../view/usuarioMostrarView.html'">Ubicacion</button>
-					<button class="btn3" type="submit" onClick="location.href = '../view/usuarioMostrarView.html'">Golpes</button>
+					<button class="btn3" method="post" type="submit" onClick="location.href = 'index.php?ctl=empleado&act=menu'">Empleados</button> 
+					<button class="btn3" type="submit" onClick="location.href = 'index.php?ctl=usuario&act=menu'">Usuarios</button>
+					<button class="btn3" type="submit" onClick="location.href = 'index.php?ctl=vehiculo&act=menu'">Vehiculos</button>
+					<button class="btn3" type="submit" onClick="location.href = 'index.php?ctl=inventario&act=menu'">Inventario</button>
+					<button class="btn3" type="submit" onClick="location.href = 'index.php?ctl=cliente&act=menu'">Clientes</button>
+					<button class="btn3" type="submit" onClick="location.href = 'index.php?ctl=ubicacion&act=menu'">Ubicacion</button>
+					<button class="btn3" type="submit" onClick="location.href = 'index.php?ctl=golpe&act=menu'">Golpes</button>
 				</div> 
 				<div id="contBtn1" style="width: 300px; height: 100px;"> 
 					<br><br><br>
@@ -66,10 +66,10 @@
 	<footer id="footer">
     	<div  id="miMenu1">
       		<ul id="listaMenu1">
-        		<li><a class= href="https://twitter.com/" ><img src="../www/img/twitter.png" alt="twitter"></a></li>
-        		<li><a href="https://www.facebook.com/"><img src="../www/img/face.png" alt="facebook"></a></a></li>
-        		<li><a href="http://www.youtube.com/"><img src="../www/img/youtube.png" alt="youtube"></a></li>
-        		<li><a href="http://mx.linkedin.com/"><img src="../www/img/in.png" alt="linkedin"></a></li>
+        		<li><a class= href="https://twitter.com/" ><img src="www/img/twitter.png" alt="twitter"></a></li>
+        		<li><a href="https://www.facebook.com/"><img src="www/img/face.png" alt="facebook"></a></a></li>
+        		<li><a href="http://www.youtube.com/"><img src="www/img/youtube.png" alt="youtube"></a></li>
+        		<li><a href="http://mx.linkedin.com/"><img src="www/img/in.png" alt="linkedin"></a></li>
       		</ul>
     	</div>
 			<p>Copyright © 2014 WEB Solutions Team</p>
@@ -86,5 +86,5 @@
 	}
  	 	//alert("tipo: " + sessionStorage.tipo);
 	</script>
-<script type="text/javascript" src="../www/js/user.js"></script>
+<script type="text/javascript" src="www/js/user.js"></script>
 </html>

@@ -162,10 +162,15 @@
 			else 
 				echo "No tienes los permisos para realizar esta operacion";
 				break;
+				case "menu":
+					$view=file_get_contents("view/golpeMenuView.html");
+					echo $view;
+				break;
 				default:
-					require_once("view/Default.php");
+					$view=file_get_contents("view/Default.html");
+					echo $view;
 			}
-					}//fin de if logged
+		}//fin de if logged
 		else{
 			echo 'Necesitas ingresar al sistema <br>';
 			echo '<a href="controller/loginCtl.php?usuario=pedro&pass=ge">Clic para hacer login</a>';

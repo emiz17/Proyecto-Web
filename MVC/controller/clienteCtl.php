@@ -178,8 +178,13 @@ Class ClienteCtl{
 				}else
 					echo "No tienes los permisos para realizar esta operacion";
 				break;
+				case "menu":
+					$view=file_get_contents("view/clienteMenuView.html");
+					echo $view;
+				break;
 				default:
-					require_once("view/Default.php");
+					$view=file_get_contents("view/Default.html");
+					echo $view;
 			}//Fin de switch
 					}//fin de if logged
 		else{

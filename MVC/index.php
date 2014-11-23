@@ -2,8 +2,6 @@
 	//url params:
 	//ctl -> vehiculos, inventario, ubicacion
 	//act -> alta, mostrar, mostrarTodos, eliminar(Solo para vehiculo)
-	$mostrar="<H1>INDEX</H1>
-	<H4>Vehiculos | Inventario | Ubicacion | Golpes | Usuario | Empleado | Cliente </H4>";
 	//echo $mostrar;
 	$sesion=0;
 	session_start();
@@ -39,11 +37,15 @@
 		break;
 		case "empleado":
 			require_once("controller/empleadoCtl.php");
-			$obj=new EmpleadoCtl();
-
+			$obj=new EmpleadoCtl();	
+		break;
+		case "login":
+			require_once("controller/loginCtl.php");
+			$obj=new LoginCtl();
 		break;
 		default:
-			require_once("index.php");
+			$view=file_get_contents("index.html");
+			echo $view;
 			$obj=null;
 	}
 	

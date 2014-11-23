@@ -179,8 +179,13 @@
 				else 
 					echo "No tienes los permisos para realizar esta operacion";
 				break;
+				case "menu":
+					$view=file_get_contents("view/ubicacionMenuView.html");
+					echo $view;
+				break;
 				default:
-					 require_once("view/Default.php");
+					$view=file_get_contents("view/Default.html");
+					echo $view;
 			}//Fin de switch
 		}//fin de if logged
 		else{
@@ -188,6 +193,9 @@
 			echo '<a href="controller/loginCtl.php?usuario=pedro&pass=ge">Clic para hacer login</a>';
 		}
 		}//fin de function execute
+
+
+
 
 		//formato YYYY/MM/DD
 		private function validar_fecha($fecha){
