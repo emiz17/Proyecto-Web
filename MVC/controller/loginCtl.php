@@ -9,6 +9,13 @@
 			$this -> model = new LoginMdl();
 
 			$vista="";
+
+			if(!isset($_POST['usuario'])&&!isset($_POST['pass'])){
+				echo $this->model->vista();
+				exit();
+			}
+
+
 			$usuario= $_POST['usuario'];
 			$clave= $_POST['pass'];
 			

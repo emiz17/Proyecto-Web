@@ -12,7 +12,7 @@
 			if($comprueba->isLogged()){
 				switch ($act){
 					case "menu":
-						$view=file_get_contents("view/usuarioView.html");
+						$view=file_get_contents("view/usuarioMenuView.html");
 						echo $view;
 					break;
 					case "alta":
@@ -56,10 +56,10 @@
 								    $this->model->sendEmail($email, $usuario, $asunto, $mensaje);
 
 								}else{
-									require_once("view/ErrorOperacion.php");
+									require_once("view/ErrorOperacion.html");
 								}//fin del if($resultado!==FALSE)
 							}else{
-								require_once("view/ErrorOperacion.php");
+								require_once("view/ErrorOperacion.html");
 							}//fin del if ($res)
 						}//fin del primer else
 						}
@@ -91,7 +91,7 @@
 									<br /><br />
 									<label for=\"clave\">Password*:</label><input type=\"password\" id=\"clave\" name=\"clave\" size=\"22\" maxlength=\"45\" value=\"{clave}\" required autofocus />
 									<br /><br />
-									<label for=\"tipo_usuario\">Tipo de Usuario*:</label><br />
+									<label for=\"tipo_usuario\">Tipo de Usuario*:</label>
 									<select name=\"tipo_usuario\" required>
 										<option selected value=''>Elige una opcion</option>
 										<option value=\"admin\">Administrador</option>
@@ -144,7 +144,7 @@
 										echo $vehiculoView;
 									}
 									else{
-										require_once("view/ErrorOperacion.php");
+										require_once("view/ErrorOperacion.html");
 									}//fin del else del if($result!==FALSE)
 
 								}//fin del if(!empty($_POST['marca'])||...
@@ -183,13 +183,13 @@
 									$view=$this->processView($result,"view/usuarioMostrarView.html",$codigoAgregado);
 									echo $view;
 								}else{
-									require_once("view/ErrorOperacion.php");
+									require_once("view/ErrorOperacion.html");
 									echo "<br>";
 									echo $view;
 								}
 
 							}else{
-								require_once("view/ErrorOperacion.php");
+								require_once("view/ErrorOperacion.html");
 								echo "<br>";
 								echo $view;
 							}
@@ -208,7 +208,7 @@
 								$view=$this->processView($result,"view/usuarioMostrarTodosView.html",FALSE);
 								echo $view;
 							}else{
-								require_once("view/ErrorOperacion.php");
+								require_once("view/ErrorOperacion.html");
 							}
 						}
 						}
@@ -220,7 +220,7 @@
 							if(empty($_POST)){
 								//Cargo la vista de agrega datos
 								if($this->model->connection_successful())
-									require_once("view/IngresaDatos.php");
+									require_once("view/IngresaDatos.html");
 							}else{
 								$usuario = isset($_POST["usuario"])?$_POST["usuario"]!==""?$_POST["usuario"]:FALSE:FALSE;
 								addslashes($usuario);
@@ -228,13 +228,13 @@
 								if ($usuario!==FALSE) {
 									$resultado = $this -> model -> eliminar($usuario);
 									if($resultado!==FALSE){
-										require_once("view/UsuarioEliminado.php");
+										require_once("view/UsuarioEliminado.html");
 									}
 									else{
-										require_once("view/ErrorOperacion.php");
+										require_once("view/ErrorOperacion.html");
 									}
 								}else{
-									require_once("view/ErrorOperacion.php");
+									require_once("view/ErrorOperacion.html");
 								}
 							}//Fin del if(empty($_POST))
 						}

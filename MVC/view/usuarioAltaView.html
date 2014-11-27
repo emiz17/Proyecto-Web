@@ -4,7 +4,7 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="./www/css/vehiculoMenuStyle.css"/>
 		<meta charset="UTF-8"/>
-		<title>WEB Solutions - Vehiculo</title>
+		<title>WEB Solutions - Usuario</title>
 	</head>
 	<body>	
 		<header id="header">
@@ -13,12 +13,12 @@
 			</div>
 			<div id="menu">
 				<ul>
-					<li><a href="index.php"title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">Home</a></li>
-					<li><a href="index.php?ctl=vehiculo&act=menu"  title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">VEHICULO</a></li>
-					<li class="active"><a href="index.php?ctl=vehiculo&act=alta" title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">ALTA DE VEHICULO</a></li>
-					<li><a href="index.php?ctl=vehiculo&act=modificar"  title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">MODIFICAR UN VEHICULO</a></li>
-					<li><a href="index.php?ctl=vehiculo&act=mostrar"  title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">BUSCAR VEHICULO</a></li>
-					<li><a href="index.php?ctl=vehiculo&act=mostrarTodos"  title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">MOSTRAR TODOS LOS VEHICULOS</a></li>
+					<li><a href="index.php?ctl=login"title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">Home</a></li>
+					<li><a href="index.php?ctl=usuario&act=menu"  title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">USUARIO</a></li>
+					<li class="active"><a href="index.php?ctl=usuario&act=alta" title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">ALTA DE USUARIO</a></li>
+					<li><a href="index.php?ctl=usuario&act=modificar"  title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">MODIFICAR UN USUARIO</a></li>
+					<li><a href="index.php?ctl=usuario&act=mostrar"  title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">BUSCAR USUARIO</a></li>
+					<li><a href="index.php?ctl=usuario&act=mostrarTodos"  title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">MOSTRAR TODOS LOS USUARIOS</a></li>
 				</ul>
 			</div>
 
@@ -33,26 +33,39 @@
 
 			<div id="form">
 				<h1>COMPLETE LOS SIGUIENTES CAMPOS</h1>
-				<form id="form_alta_vehiculo" action="index.php?ctl=vehiculo&act=alta" method="POST">
+				<form id="form_alta_vehiculo" action="index.php?ctl=usuario&act=alta" method="POST">
 					
-					<label for="vin">VIN*:</label>
-					<input type="text" id="vin" name="vin" size="22" maxlength="17" placeholder="Ingresa el VIN del vehiculo" required autofocus />
+					<label for="usuario">User ID*:</label>
+					<input type="text" id="usuario" name="usuario" size="22" maxlength="25" placeholder="Ingresa el nombre de usuario" required autofocus />
 
-					<br /><br />
+					<br />
 
-					<label for="marca">Marca*:</label>
-					<input type="text" id="marca" name="marca" size="22" maxlength="25" placeholder="Ingresa la marca del vehiculo" required autofocus />
+					<label for="clave">Password*:</label>
+					<input type="password" id="clave" name="clave" size="22" maxlength="45" placeholder="Ingresa la clave de usuario" required autofocus />
 
-					<br /><br />
+					<br />
 
-					<label for="modelo">Modelo*:</label>
-					<input type="text" id="modelo" name="modelo" size="22" maxlength="4" placeholder="Ingresa el modelo del vehiculo" required />
+					<label for="tipo_usuario">Tipo de Usuario*:</label>
+					<select name="tipo_usuario" required>
+						<option selected value=''>Elige una opcion</option>
+						<option value="admin">Administrador</option>
+						<option value="cliente">Cliente</option>
+						<option value="empleado">Empleado</option>
+					</select>
+									
 
-					<br /><br />
+					<br />
 
-					<label for="color">Color*:</label>
-					<input type="color" id="color" name="color" required />
+					<fieldset>
+						<legend>Status:</legend>
+							<input type="radio" name="status"  checked>Activo
+							<input type="radio" name="status">No Activo
+					</fieldset>
 
+					<br />
+
+					<label for="email">Email*:</label><input type="email" id="email" name="email" placeholder="Ingresa tu email" required />
+					
 					<br /><br />
 
 					<button type="submit">Agregar</button>
