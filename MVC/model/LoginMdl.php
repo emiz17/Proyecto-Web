@@ -65,13 +65,16 @@
 
 			$r=$this->driver->query($query);
 			//var_dump($r);
-			$row=$r->fetch_assoc();
-			//var_dump($row); 
-		//	echo "<br>cont:  " .$row['cont'];
-			if($row['cont']==0)
+			if($r!==FALSE){
+				$row=$r->fetch_assoc();
+				//var_dump($row); 
+				//	echo "<br>cont:  " .$row['cont'];
+				if($row['cont']==0)
+					$row=false;
+				else 
+					$row=true;
+			}else
 				$row=false;
-			else 
-				$row=true;
 			return $row;
 
 		/*function cerrarDB(){

@@ -45,21 +45,29 @@
 								$resultado = $this->model->alta($usuario, $clave, $tipo_usuario, $status, $email);
 
 								if($resultado!==FALSE){
-								    $codigoAgregado="<br /><h1>Vehiculo Agregado Exitosamente</h1><br /><br /><a href=\"index.php?ctl=vehiculo&act=alta\">Agregar Otro</a>";
-									$view=$this->processView($result,"view/usuarioAltaView.html",$codigoAgregado);
-									echo $view;
+								    //$codigoAgregado="<br /><h1>Usuario Agregado Exitosamente</h1><br /><br /><a href=\"index.php?ctl=vehiculo&act=alta\">Agregar Otro</a>";
+									//$view=$this->processView(FALSE,"view/usuarioAltaView.html",$codigoAgregado);
+									//echo $view;
 								    
 								    //Preparamos datos para enviar el mail
 								    $asunto="Bienvenido a WEB Solutions Team Vehiculo Project";
 								    $mensaje="Gracias por elegirnos como su mejor opcion para guardar su coche.\n 
 								    Disfrute su dia y nosotros nos encargamos de que su auto se encuentre seguro.";
-								    $this->model->sendEmail($email, $usuario, $asunto, $mensaje);
-
+								    if(($this->model->sendEmail($email, $usuario, $asunto, $mensaje))===TRUE){
+										$codigoAgregado="<br /><h1>Usuario agregado Exitosamente<br />Un mensaje de confirmacion fue enviado a su cuenta</h1><br /><br /><a href=\"index.php?ctl=usuario&act=alta\">Agregar Otro</a>";   	
+										//echo $codigoAgregado;
+									}else{
+										$codigoAgregado="<br /><h1>Usuario agregado Exitosamente<br />Hubo un error al enviar el mensaje, verifique si la cuenta existe</h1><br /><br /><a href=\"index.php?ctl=usuario&act=alta\">Agregar Otro</a>";   	
+									}
+									$view=$this->processView(FALSE,"view/usuarioAltaView.html",$codigoAgregado);
+									echo $view;
 								}else{
-									require_once("view/ErrorOperacion.html");
+									$view=file_get_contents("view/ErrorOperacion.html");
+									echo $view;
 								}//fin del if($resultado!==FALSE)
 							}else{
-								require_once("view/ErrorOperacion.html");
+								$view=file_get_contents("view/ErrorOperacion.html");
+								echo $view;
 							}//fin del if ($res)
 						}//fin del primer else
 						}

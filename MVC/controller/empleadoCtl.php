@@ -14,8 +14,10 @@ Class EmpleadoCtl{
 			case "alta":
 			if($comprueba->isAdmin()){
 				if(empty($_POST)){
-					if($this->model->connection_successful())
-						require_once("view/IngresaDatos.php");
+					if($this->model->connection_successful()){
+						$view=file_get_contents("view/empleadoAltaView.html");
+							echo $view;
+					}
 				}//fin del if
 				else{
 				    //Obtener las variables para la alta
@@ -37,12 +39,15 @@ Class EmpleadoCtl{
 					if ($res) {
 						$resultado = $this -> model -> alta($nombre, $apellidos, $domicilio, $telefono, $usuario);
 						if($resultado!==FALSE){
-						    require_once("view/AddEmpleado.php");
+						     $codigoAgregado="<br /><h1>Empleado Agregado Exitosamente</h1><br /><br /><a href=\"index.php?ctl=empleado&act=alta\">Agregar Otro</a>";
+								    $view=file_get_contents("view/empleadoAltaView.html");
+									$view=$this->processView($result,"view/empleadoAltaView.html",$codigoAgregado);
+									echo $view;
 						}else{
-							require_once("view/ErrorOperacion.php");
+							require_once("view/ErrorOperacion.html");
 						}//fin del if($resultado!==FALSE)
 					}else{
-						require_once("view/ErrorOperacion.php");
+						require_once("view/ErrorOperacion.html");
 					}//fin del if ($res)
 				}//fin del primer else
 				}
@@ -53,8 +58,13 @@ Class EmpleadoCtl{
 			if($comprueba->isAdmin()|| $comprueba->isEmpleado()){
 				if(empty($_POST)){
 					//Cargo la vista de agrega datos
-					if($this->model->connection_successful())
-						require_once("view/InsertId.php");
+					if($this->model->connection_successful()){
+						$view=file_get_contents("view/empleadoModificarView.html");
+							$view=$this->processView(FALSE,"view/empleadoModificarView.html",FALSE);
+							echo $view;
+
+					}
+						
 				}//fin del if
 				else{
 					$idEmpleado = $_POST["idEmpleado"];
@@ -63,9 +73,28 @@ Class EmpleadoCtl{
 					//Se muestran los datos actuales
 					$result=$this -> model -> mostrarDatos($idEmpleado);
 
-					if ($result!==FALSE) {
-						require_once("view/ShowEmpleado.php");
-						echo "<br><br>Inserte el/los campos a modificar:<br>";
+					if ($result!==FALSE&&(empty($_POST['nombre'])||empty($_POST['apellidos'])||empty($_POST['domicilio'])||empty($_POST['telefono']))) {
+						$codigoAgregado="<h1>MODIFIQUE ALGUNO DE LOS SIGUIENTES CAMPOS</h1>	
+							<form id=\"form_alta\" action=\"index.php?ctl=empleado&act=modificar\" method=\"POST\">
+							<label for=\"nombre\">Nombre*:</label>
+							<input type=\"text\" id=\"nombre\" name=\"nombre\" size=\"25\" maxlength=\"50\" value=\"{nombre}\" required autofocus />
+							<br /><br />
+							<label for=\"apellidos\">Apellidos*:</label>
+							<input type=\"text\" id=\"apellidos\" name=\"apellidos\" size=\"25\" maxlength=\"50\" value=\"{apellidos}\" required autofocus />
+							<br /><br />
+							<label for=\"domicilio\">Domicilio:</label>
+							<input type=\"text\" id=\"domicilio\" name=\"domicilio\" size=\"25\" maxlength=\"45\" value=\"{domicilio}\" />
+							<br /><br />
+							<label for=\"telefono\">Telefono:</label>
+							<input type=\"tel\" id=\"telefono\" name=\"telefono\" value=\"{telefono}\" />
+							<br /><br />
+							<button type=\"submit\">Modificar</button>
+							</form>";
+
+
+						$view=file_get_contents("view/empleadoModificarView.html");
+							$view=$this->processView(FALSE,"view/empleadoModificarView.html",FALSE);
+							echo $view;
 					}else{
 						require_once("view/ErrorOperacion.php");
 						echo "<br>";

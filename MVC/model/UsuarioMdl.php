@@ -146,9 +146,9 @@
 	    	'X-Mailer: PHP/' . phpversion();
 
 			if(mail($to, $asunto, $mensaje, $headers))
-				echo "Mensaje enviado exitosamente.";
+				return TRUE;
 			else
-				echo "Ocurrio un error al enviar el archivo";
+				return FALSE;
 
 		}//fin de function send
 

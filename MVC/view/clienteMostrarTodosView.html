@@ -4,7 +4,7 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="./www/css/vehiculoMenuStyle.css"/>
 		<meta charset="UTF-8"/>
-		<title>WEB Solutions - Vehiculo</title>
+		<title>WEB Solutions - Cliente</title>
 	</head>
 	<body>	
 		<header id="header">
@@ -13,12 +13,12 @@
 			</div>
 			<div id="menu">
 				<ul>
-					<li><a href="index.php"title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">Home</a></li>
-					<li><a href="index.php?ctl=vehiculo&act=menu"  title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">VEHICULO</a></li>
-					<li><a href="index.php?ctl=vehiculo&act=alta" title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">ALTA DE VEHICULO</a></li>
-					<li><a href="index.php?ctl=vehiculo&act=modificar"  title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">MODIFICAR UN VEHICULO</a></li>
-					<li><a href="index.php?ctl=vehiculo&act=mostrar"  title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">BUSCAR VEHICULO</a></li>
-					<li class="active"><a href="index.php?ctl=vehiculo&act=mostrarTodos"  title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">MOSTRAR TODOS LOS VEHICULOS</a></li>
+					<li><a href="index.php?ctl=login"title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">Home</a></li>
+					<li><a href="index.php?ctl=cliente&act=menu"  title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">CLIENTE</a></li>
+					<li><a href="index.php?ctl=cliente&act=alta" title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">ALTA DE CLIENTE</a></li>
+					<li><a href="index.php?ctl=cliente&act=modificar"  title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">MODIFICAR UN CLIENTE</a></li>
+					<li><a href="index.php?ctl=cliente&act=mostrar"  title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">BUSCAR CLIENTE</a></li>
+					<li class="active"><a href="index.php?ctl=cliente&act=mostrarTodos"  title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">MOSTRAR TODOS LOS CLIENTES</a></li>
 				</ul>
 			</div>
 
@@ -35,26 +35,26 @@
 				<table id="table">
 					<thead>
 						<tr>
-							<th>VIN</th>
-							<th>Marca</th>
-							<th>Modelo</th>
-							<th>Color</th>
+							<th>Nombre</th>
+							<th>Apellidos</th>
+							<th>Domicilio</th>
+							<th>Telefono</th>
 						</tr>
 					</thead>
 					<tbody>
 						{Inicio_tabla}
 						<tr>
 							<td>
-								{VIN}
+								{nombre}
 							</td>
 							<td>
-								{marca}
+								{apellidos}
 							</td>
 							<td>
-								{modelo}
+								{domicilio}
 							</td>
 							<td>
-								{color}
+								{telefono}
 							</td>
 						</tr>
 						{Fin_tabla}

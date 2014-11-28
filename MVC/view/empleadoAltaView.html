@@ -2,23 +2,23 @@
 <html lang="es">
 	<!--<div id="main">-->
 	<head>
-		<link rel="stylesheet" type="text/css" href="./www/css/vehiculoMenuStyle.css"/>
+		<link rel="stylesheet" type="text/css" href="www/css/vehiculoMenuStyle.css"/>
 		<meta charset="UTF-8"/>
-		<title>WEB Solutions - Vehiculo</title>
+		<title>WEB Solutions - Empleado</title>
 	</head>
 	<body>	
 		<header id="header">
 			<div class="image1">
-				<img id="image1" src="./www/img/auto1.jpg" alt="WEB Solutions">
+				<img id="image1" src="www/img/auto1.jpg" alt="WEB Solutions">
 			</div>
 			<div id="menu">
 				<ul>
-					<li><a href="index.php"title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">Home</a></li>
-					<li><a href="index.php?ctl=vehiculo&act=menu"  title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">VEHICULO</a></li>
-					<li class="active"><a href="index.php?ctl=vehiculo&act=alta" title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">ALTA DE VEHICULO</a></li>
-					<li><a href="index.php?ctl=vehiculo&act=modificar"  title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">MODIFICAR UN VEHICULO</a></li>
-					<li><a href="index.php?ctl=vehiculo&act=mostrar"  title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">BUSCAR VEHICULO</a></li>
-					<li><a href="index.php?ctl=vehiculo&act=mostrarTodos"  title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">MOSTRAR TODOS LOS VEHICULOS</a></li>
+					<li><a href="index.php?ctl=login"title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">Home</a></li>
+					<li><a href="index.php?ctl=empleado&act=menu"  title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">EMPLEADO</a></li>
+					<li class="active"><a href="index.php?ctl=empleado&act=alta" title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">ALTA DE EMPLEADO</a></li>
+					<li><a href="index.php?ctl=empleado&act=modificar"  title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">MODIFICAR UN EMPLEADO</a></li>
+					<li><a href="index.php?ctl=empleado&act=mostrar"  title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">BUSCAR EMPLEADO</a></li>
+					<li><a href="index.php?ctl=empleado&act=mostrarTodos"  title="" onMouseOver="playSound(0)" onMouseOut="stopSound(0)">MOSTRAR TODOS LOS EMPLEADOS</a></li>
 				</ul>
 			</div>
 
@@ -33,25 +33,25 @@
 
 			<div id="form">
 				<h1>COMPLETE LOS SIGUIENTES CAMPOS</h1>
-				<form id="form_alta_vehiculo" action="index.php?ctl=vehiculo&act=alta" method="POST">
+				<form id="form_alta_vehiculo" action="index.php?ctl=empleado&act=alta" method="POST">
 					
-					<label for="vin">VIN*:</label>
-					<input type="text" id="vin" name="vin" size="22" maxlength="17" placeholder="Ingresa el VIN del vehiculo" required autofocus />
+				<label for="nombre">Nombre*:</label>
+					<input type="text" id="nombre" name="nombre" size="25" maxlength="50" placeholder="Ingresa el nombre del Empleado" required autofocus />
 
 					<br /><br />
 
-					<label for="marca">Marca*:</label>
-					<input type="text" id="marca" name="marca" size="22" maxlength="25" placeholder="Ingresa la marca del vehiculo" required autofocus />
+					<label for="apellidos">Apellidos*:</label>
+					<input type="text" id="apellidos" name="apellidos" size="25" maxlength="50" placeholder="Ingresa el/los apellidos del Empleado" required autofocus />
 
 					<br /><br />
 
-					<label for="modelo">Modelo*:</label>
-					<input type="text" id="modelo" name="modelo" size="22" maxlength="4" placeholder="Ingresa el modelo del vehiculo" required />
+					<label for="domicilio">Domicilio:</label>
+					<input type="text" id="domicilio" name="domicilio" size="25" maxlength="45" placeholder="Ingresa el domicilio del Empleado" />
 
 					<br /><br />
 
-					<label for="color">Color*:</label>
-					<input type="color" id="color" name="color" required />
+					<label for="telefono">Telefono:</label>
+					<input type="tel" id="telefono" name="telefono" />
 
 					<br /><br />
 
